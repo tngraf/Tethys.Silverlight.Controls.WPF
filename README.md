@@ -11,18 +11,13 @@ Custom controls for WPF.
 ### Controls ###
 
 * PieProgressControl, a progress control in form of a pie-chart.
+  ![](https://github.com/tngraf/Tethys.Silverlight.Controls.WPF/blob/master/doc/PieProgressControl.jpg)
+
 * CircularGaugeControl, a very flexible gauge control.
-* ModernWindow, a window with modern looking chrome. 
+  ![](https://github.com/tngraf/Tethys.Silverlight.Controls.WPF/blob/master/doc/CircularGaugeControl.jpg)
 
-#### Screenshots ####
-/doc/PieProgressControl.jpg
-![](https://github.com/tngraf/Tethys.Silverlight.Controls.WPF/blob/master/doc/c)
-
-/doc/CircularGaugeControl.jpg
-![](https://github.com/tngraf/Tethys.Silverlight.Controls.WPF/blob/master/doc/CircularGaugeControl.jpg)
-
-/doc/ModernWindow.jpg
-![](https://github.com/tngraf/Tethys.Silverlight.Controls.WPF/blob/master/doc/ModernWindow.jpg)
+* ModernWindow, a window with modern looking chrome.
+  ![](https://github.com/tngraf/Tethys.Silverlight.Controls.WPF/blob/master/doc/ModernWindow.jpg)
 
 ## Build ##
 
