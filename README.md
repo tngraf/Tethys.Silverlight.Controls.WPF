@@ -1,4 +1,42 @@
 Tethys.Silverlight.Controls.WPF
 ===============================
 
-Custom controls for WPF
+Custom controls for WPF.
+
+## Solution Overview ##
+
+* Tethys.Silverlight.Controls.WPF - the library
+* Tethys.Silverlight.Controls.WPF.Demo - a demo/test project 
+
+### Controls ###
+
+* PieProgressControl, a progress control in form of a pie-chart.
+* CircularGaugeControl, a very flexible gauge control.
+* ModernWindow, a window with modern looking chrome. 
+
+#### Screenshots ####
+/doc/PieProgressControl.jpg
+![](https://github.com/tngraf/Tethys.Silverlight.Controls.WPF/blob/master/doc/c)
+
+/doc/CircularGaugeControl.jpg
+![](https://github.com/tngraf/Tethys.Silverlight.Controls.WPF/blob/master/doc/CircularGaugeControl.jpg)
+
+/doc/ModernWindow.jpg
+![](https://github.com/tngraf/Tethys.Silverlight.Controls.WPF/blob/master/doc/ModernWindow.jpg)
+
+## Build ##
+
+### Requisites ###
+
+* Visual Studio 2013
+
+## Thanks ##
+
+The circular gauge control is based on EvelynT's great work described
+in the Code Project article [http://www.codeproject.com/Articles/38361/Circular-gauge-custom-control-for-Silverlight-3-an](http://www.codeproject.com/Articles/38361/Circular-gauge-custom-control-for-Silverlight-3-an "Link") and licensed
+under a BSD like License.
+
+## License ##
+
+Tethys.Silverlight.Controls.WPF is licensed under the Apache License, Version 2.0, except for CircularGaugeControl which is BSD licensed
+(see header).
