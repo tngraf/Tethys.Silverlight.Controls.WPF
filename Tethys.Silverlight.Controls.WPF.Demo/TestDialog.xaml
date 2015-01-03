@@ -1,0 +1,41 @@
+﻿<Wpf:ModernWindow 
+    x:Class="Tethys.Silverlight.Controls.WPF.Demo.TestDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Wpf="clr-namespace:Tethys.Silverlight.Controls.WPF;assembly=Tethys.Silverlight.Controls.WPF"
+    xmlns:Demo="clr-namespace:Tethys.Silverlight.Controls.WPF.Demo"
+    Title="TestDialog" 
+    BorderBrush="LightSkyBlue"
+    Icon="/Resources/OBD.ico"
+    LoadedCommand="{Binding LoadedCommand}"
+    ActivatedCommand="{Binding ActivatedCommand}"
+    ClosingCommand="{Binding ClosingCommand}"
+    ResizedCommand="{Binding ResizedCommand}"
+    WindowStateChangeCommand="{Binding WindowStateChangeCommand}"
+    ShowMinButton="True"
+    ShowCloseButton="True"
+    MinHeight="200" MinWidth="200"
+    Height="300" Width="300">
+
+    <Wpf:ModernWindow.DataContext>
+        <Demo:TestWindowViewModel />
+    </Wpf:ModernWindow.DataContext>
+    
+    <Wpf:ModernWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Tethys.Silverlight.Controls.WPF;component/Themes/Generic.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Wpf:ModernWindow.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
+        <Label Grid.Row="0" Content="Some Label" />
+        <Button Grid.Row="1" Content="Some Button" />
+    </Grid>
+</Wpf:ModernWindow>

@@ -1,0 +1,267 @@
+﻿<Window x:Class="Tethys.Silverlight.Controls.WPF.Demo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Local="clr-namespace:Tethys.Silverlight.Controls.WPF.Demo"
+        xmlns:Controls="clr-namespace:Tethys.Silverlight.Controls.WPF;assembly=Tethys.Silverlight.Controls.WPF"
+        Title="MainWindow" 
+        Icon="/Resources/OBD.ico"
+        Height="350" Width="525">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Tethys.Silverlight.Controls.WPF;component/Themes/Generic.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <LinearGradientBrush x:Key="ProgressForegroundBrush" StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Offset="0" Color="LightGreen" />
+                <GradientStop Offset="1" Color="DarkGreen" />
+            </LinearGradientBrush>
+
+            <ControlTemplate x:Key="ProgressPie" TargetType="{x:Type ProgressBar}">
+                <!-- Resources -->
+                <ControlTemplate.Resources>
+                    <Local:ValueMinMaxToPointConverter x:Key="Converter1" />
+                    <Local:ValueMinMaxToIsLargeArcConverter x:Key="Converter2" />
+                </ControlTemplate.Resources>
+
+                <!-- Visual Tree -->
+                <Viewbox>
+                    <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+                        <Ellipse x:Name="background" 
+                             Stroke="{TemplateBinding BorderBrush}"
+                             StrokeThickness="{TemplateBinding BorderThickness}"
+                             Width="{TemplateBinding Width}" Height="{TemplateBinding Height}"
+                             Fill="{TemplateBinding Background}"/>
+                        <Path x:Name="pie" Fill="{TemplateBinding Foreground}">
+                            <Path.Data>
+                                <PathGeometry>
+                                    <PathFigure StartPoint="10,10" IsClosed="True">
+                                        <LineSegment Point="10,0" />
+                                        <ArcSegment Size="10,10" SweepDirection="Clockwise">
+                                            <ArcSegment.Point>
+                                                <MultiBinding Converter="{StaticResource Converter1}">
+                                                    <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="Value" />
+                                                    <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="Minimum" />
+                                                    <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="Maximum" />
+                                                </MultiBinding>
+                                            </ArcSegment.Point>
+                                            <ArcSegment.IsLargeArc>
+                                                <MultiBinding Converter="{StaticResource Converter2}">
+                                                    <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="Value" />
+                                                    <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="Minimum" />
+                                                    <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="Maximum" />
+                                                </MultiBinding>
+                                            </ArcSegment.IsLargeArc>
+                                        </ArcSegment>
+                                    </PathFigure>
+                                </PathGeometry>
+                            </Path.Data>
+                        </Path>
+                    </Grid>
+                </Viewbox>
+
+                <!-- Triggers -->
+                <ControlTemplate.Triggers>
+                    <Trigger Property="IsIndeterminate" Value="True">
+                        <Setter TargetName="pie" Property="Visibility" Value="Hidden" />
+                        <Setter TargetName="background" Property="Fill">
+                            <Setter.Value>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Offset="0" Color="Yellow" />
+                                    <GradientStop Offset="1" Color="Brown" />
+                                </LinearGradientBrush>
+                            </Setter.Value>
+                        </Setter>
+                    </Trigger>
+                    <Trigger Property="IsEnabled" Value="False">
+                        <Setter TargetName="pie" Property="Fill">
+                            <Setter.Value>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Offset="0" Color="Gray" />
+                                    <GradientStop Offset="1" Color="White" />
+                                </LinearGradientBrush>
+                            </Setter.Value>
+                        </Setter>
+                    </Trigger>
+                </ControlTemplate.Triggers>
+            </ControlTemplate>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+        <TabControl>
+            <TabItem Header="Modern Window">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Button Content="Test Dialog 1" 
+                            Grid.Row="0" Width="100" 
+                            Margin="10" 
+                            Click="ButtonBase_OnClick" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="Gauge">
+                <Grid Background="Black">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- RPM -->
+                    <Controls:CircularGaugeControl 
+                        x:Name="RpmGauge"
+                        Margin="10"
+                        Grid.Column="0" Grid.Row="0"
+                        FittingBrush="LightGray"
+                        FittingWidth="2"
+                        Radius="150" 
+                        ScaleRadius="135" 
+                        ScaleLabelRadius="110"
+                        ScaleLabelSize="40,20"
+                        ScaleLabelFontSize="18"
+                        ScaleLabelForeground="White"
+                        MajorTickSize="10,3"
+                        MinorTickSize="3,1"
+                        MajorTickColor="White"
+                        MinorTickColor="White"
+                        ScaleStartAngle="90" 
+                        ScaleSweepAngle="270"
+                        PointerLength="85" 
+                        PointerCapRadius="35" 
+                        MinValue="0" 
+                        MaxValue="8" 
+                        MajorDivisionsCount="8" 
+                        MinorDivisionsCount="5" 
+                        FontSize="10"
+                        CurrentValue="{Binding Value, ElementName=RpmSlider}"
+                        RangeIndicatorThickness="4"
+                        RangeIndicatorRadius="145"
+                        RangeIndicatorLightRadius="10"
+                        RangeIndicatorLightOffset="80"
+                        BelowOptimalRangeColor="Transparent"
+                        OptimalRangeColor="Transparent"
+                        OptimalRangeStartValue="1"
+                        OptimalRangeEndValue="6" 
+                        GaugeBackgroundColor="Black"
+                        ShowBackground="False"
+                        PointerThickness ="16"
+                        DialTextOffsetX="80" 
+                        DialTextOffsetY="70" 
+                        DialText="1/min x 1000"
+                        DialTextColor="White" />
+
+                    <Slider x:Name="RpmSlider"
+                        Grid.Column="1" Grid.Row="0"
+                        Margin="30"
+                        Orientation="Vertical"
+                        Minimum="0"
+                        Maximum="8"
+                        TickFrequency="0.5"
+                        TickPlacement="BottomRight"
+                        Value="1.5" />
+
+                    <!-- Speed -->
+                    <Controls:CircularGaugeControl 
+                        x:Name="SpeedGauge"
+                        Margin="10"
+                        Grid.Column="0" Grid.Row="1"
+                        FittingBrush="LightGray"
+                        FittingWidth="2"
+                        Radius="150" 
+                        ScaleRadius="135" 
+                        ScaleLabelRadius="110"
+                        ScaleLabelSize="40,20"
+                        ScaleLabelFontSize="18"
+                        ScaleLabelForeground="White"
+                        MajorTickSize="10,3"
+                        MinorTickSize="3,1"
+                        MajorTickColor="White"
+                        MinorTickColor="White"
+                        ScaleStartAngle="90" 
+                        ScaleSweepAngle="270"
+                        PointerLength="85" 
+                        PointerCapRadius="35" 
+                        MinValue="0" 
+                        MaxValue="280" 
+                        MajorDivisionsCount="14" 
+                        MinorDivisionsCount="5" 
+                        FontSize="10"
+                        CurrentValue="{Binding Value, ElementName=SpeedSlider}"
+                        RangeIndicatorThickness="4"
+                        RangeIndicatorRadius="145"
+                        RangeIndicatorLightRadius="10"
+                        RangeIndicatorLightOffset="80"
+                        BelowOptimalRangeColor="Transparent"
+                        OptimalRangeColor="Transparent"
+                        OptimalRangeStartValue="1"
+                        OptimalRangeEndValue="260" 
+                        GaugeBackgroundColor="Black"
+                        ShowBackground="False"
+                        PointerThickness ="16"
+                        DialTextOffsetX="80" 
+                        DialTextOffsetY="70" 
+                        DialText="km/h"
+                        DialTextColor="White" />
+
+                    <Slider x:Name="SpeedSlider"
+                        Grid.Column="1" Grid.Row="1"
+                        Margin="30"
+                        Orientation="Vertical"
+                        Minimum="0"
+                        Maximum="280"
+                        TickFrequency="20"
+                        TickPlacement="BottomRight"
+                        Value="100" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="Progressbar">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <GroupBox Grid.Row="0" Header=" Default ">
+                        <StackPanel Orientation="Vertical">
+                            <ProgressBar Width="200" Height="30" 
+                                         Value="{Binding Value, ElementName=ProgressSlider}"
+                                         Margin="8" />
+                            <Slider x:Name="ProgressSlider"
+                                    Margin="10,0,10,0" Orientation="Horizontal"
+                                    Minimum="0" Maximum="100" Width="350"
+                                    TickFrequency="5" TickPlacement="BottomRight"
+                                    Value="35" />
+                        </StackPanel>
+                    </GroupBox>
+
+                    <GroupBox Grid.Row="1" Header=" Custom Control ">
+                        <Controls:PieProgressControl 
+                            Width="40" Height="40"
+                            Minimum="0" Maximum="100" 
+                            Value="{Binding Value, ElementName=ProgressSlider}"
+                            IsIndeterminate="False" 
+                            Foreground="{StaticResource ProgressForegroundBrush}" />
+                    </GroupBox>
+
+                    <GroupBox Grid.Row="2" Header=" Styled ">
+                        <ProgressBar Width="20" Height="20" 
+                                     Value="{Binding Value, ElementName=ProgressSlider}"
+                                     Foreground="{StaticResource ProgressForegroundBrush}"
+                                     Template="{StaticResource ProgressPie}" />
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>
