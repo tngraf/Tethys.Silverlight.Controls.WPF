@@ -3,6 +3,9 @@ Tethys.Silverlight.Controls.WPF
 
 Custom controls for WPF.
 
+## Project Build Status ##
+[![Build status](https://ci.appveyor.com/api/projects/status/jw8vlyrkk3asftt0?svg=true)](https://ci.appveyor.com/project/tngraf/tethys-silverlight-controls-wpf)
+
 ## Solution Overview ##
 
 * Tethys.Silverlight.Controls.WPF - the library
