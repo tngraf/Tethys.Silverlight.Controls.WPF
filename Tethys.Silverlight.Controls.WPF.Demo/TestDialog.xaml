@@ -6,7 +6,7 @@
     xmlns:Demo="clr-namespace:Tethys.Silverlight.Controls.WPF.Demo"
     Title="TestDialog" 
     BorderBrush="LightSkyBlue"
-    Icon="/Resources/OBD.ico"
+    Icon="/Resources/Demo.ico"
     LoadedCommand="{Binding LoadedCommand}"
     ActivatedCommand="{Binding ActivatedCommand}"
     ClosingCommand="{Binding ClosingCommand}"

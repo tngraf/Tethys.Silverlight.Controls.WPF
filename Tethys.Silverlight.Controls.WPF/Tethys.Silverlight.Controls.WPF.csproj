@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="ColorToSolidColorBrushConverter.cs" />
     <Compile Include="ImageOffsetConverter.cs" />
+    <Compile Include="PasswordBoxEx.cs" />
     <Compile Include="RadiusToDiameterConverter.cs" />
     <Compile Include="PointerCenterConverter.cs" />
     <Compile Include="RangeIndicatorLightPositionConverter.cs" />
@@ -56,6 +57,10 @@
     <Compile Include="GlassEffectWidthConverter.cs" />
     <Compile Include="BackgroundColorConverter.cs" />
     <Compile Include="DialTextPositionConverter.cs" />
+    <Page Include="Themes\Controls\ModernWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -67,15 +72,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Themes\ModernWindow.xaml">
+    <Page Include="Themes\Controls\PasswordBoxEx.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Themes\CircularGaugeControl.xaml">
+    <Page Include="Themes\Controls\CircularGaugeControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Themes\PieProgressControl.xaml">
+    <Page Include="Themes\Controls\PieProgressControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
