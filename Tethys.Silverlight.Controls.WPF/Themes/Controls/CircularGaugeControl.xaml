@@ -41,18 +41,19 @@
 
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:Tethys.Silverlight.Controls.WPF">
+                    xmlns:local="clr-namespace:Tethys.Silverlight.Controls.WPF"
+                    xmlns:Converter="clr-namespace:Tethys.Silverlight.Controls.WPF.Converter">
     <!-- Type converters-->
-    <local:ImageOffsetConverter x:Key="ImageOffsetConverter" />
-    <local:RadiusToDiameterConverter x:Key="RadiusToDiameterConverter"/>
-    <local:PointerCenterConverter x:Key="PointerCenterConverter"/>
-    <local:RangeIndicatorLightPositionConverter x:Key="RangeIndicatorLightPositionConverter"/>
-    <local:SizeConverter x:Key="SizeConverter" />
-    <local:BackgroundColorConverter x:Key="BackgroundColorConverter" />
-    <local:GlassEffectWidthConverter x:Key="GlassEffectWidthConverter" />
-    <local:ColorToSolidColorBrushConverter x:Key="ColorToSolidColorBrushConverter" />
+    <Converter:ImageOffsetConverter x:Key="ImageOffsetConverter" />
+    <Converter:RadiusToDiameterConverter x:Key="RadiusToDiameterConverter"/>
+    <Converter:PointerCenterConverter x:Key="PointerCenterConverter"/>
+    <Converter:RangeIndicatorLightPositionConverter x:Key="RangeIndicatorLightPositionConverter"/>
+    <Converter:SizeConverter x:Key="SizeConverter" />
+    <Converter:BackgroundColorConverter x:Key="BackgroundColorConverter" />
+    <Converter:GlassEffectWidthConverter x:Key="GlassEffectWidthConverter" />
+    <Converter:ColorToSolidColorBrushConverter x:Key="ColorToSolidColorBrushConverter" />
     <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
-    <local:DialTextPositionConverter x:Key="DialTextPositionConverter" />
+    <Converter:DialTextPositionConverter x:Key="DialTextPositionConverter" />
 
     <Style TargetType="local:CircularGaugeControl" >
         <Setter Property="ResetPointerOnStartUp" Value="True" />

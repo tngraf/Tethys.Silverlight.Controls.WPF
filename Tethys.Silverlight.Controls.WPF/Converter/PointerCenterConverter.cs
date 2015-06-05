@@ -6,7 +6,7 @@
 // A custom control library for WPF applications.
 //
 // ==========================================================================
-// <copyright file="DialTextPositionConverter.cs" company="Tethys">
+// <copyright file="PointerCenterConverter.cs" company="Tethys">
 // Copyright  2015 by T. Graf (for the modifications)
 // Copyright (c) 2009 T.Evelyn (evescode@gmail.com) 
 //            All rights reserved.
@@ -41,7 +41,7 @@
 // ---------------------------------------------------------------------------
 #endregion
 
-namespace Tethys.Silverlight.Controls.WPF
+namespace Tethys.Silverlight.Controls.WPF.Converter
 {
     using System;
     using System.Globalization;
@@ -49,32 +49,29 @@ namespace Tethys.Silverlight.Controls.WPF
     using System.Windows.Media;
 
     /// <summary>
-    /// Calculates the dial text position
+    /// Calculates the pointer position.
     /// </summary>
-    public class DialTextPositionConverter : IMultiValueConverter
+    public class PointerCenterConverter : IValueConverter
     {
         /// <summary>
-        /// Converts a given x and y value to a render transform.
+        /// Converts a double value to a translate transformation.
         /// </summary>
-        /// <param name="values">The array of values that the source bindings in the 
-        /// <see cref="T:System.Windows.Data.MultiBinding" /> produces. </param>
+        /// <param name="value">The value produced by the binding source.</param>
         /// <param name="targetType">The type of the binding target property.</param>
         /// <param name="parameter">The converter parameter to use.</param>
         /// <param name="culture">The culture to use in the converter.</param>
         /// <returns>
-        /// A converted value.
+        /// A converted value. If the method returns null, the valid null value is used.
         /// </returns>
-        public object Convert(object[] values, Type targetType,
+        public object Convert(object value, Type targetType,
             object parameter, CultureInfo culture)
         {
-            var x = (double)values[0];
-            var y = (double)values[1];
+            var dblVal = (double)value;
             var tg = new TransformGroup();
             var rt = new RotateTransform();
             var tt = new TranslateTransform();
 
-            tt.X = x;
-            tt.Y = y;
+            tt.X = dblVal / 2;
             tg.Children.Add(rt);
             tg.Children.Add(tt);
 
@@ -85,16 +82,16 @@ namespace Tethys.Silverlight.Controls.WPF
         /// Backwards conversion is NOT supported.
         /// </summary>
         /// <param name="value">The value that is produced by the binding target.</param>
-        /// <param name="targetTypes">The type to convert to.</param>
+        /// <param name="targetType">The type to convert to.</param>
         /// <param name="parameter">The converter parameter to use.</param>
         /// <param name="culture">The culture to use in the converter.</param>
         /// <returns>
         /// A converted value. If the method returns null, the valid null value is used.
         /// </returns>
-        public object[] ConvertBack(object value, Type[] targetTypes,
+        public object ConvertBack(object value, Type targetType,
             object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
         } // ConvertBack()
-    } // DialTextPositionConverter
-} // Tethys.Silverlight.Controls.WPFs
+    } // PointerCenterConverter
+} // Tethys.Silverlight.Controls.WPF

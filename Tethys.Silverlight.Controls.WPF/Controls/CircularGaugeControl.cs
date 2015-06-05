@@ -41,6 +41,7 @@
 // ---------------------------------------------------------------------------
 #endregion
 
+// ReSharper disable once CheckNamespace
 namespace Tethys.Silverlight.Controls.WPF
 {
     using System;
@@ -61,6 +62,11 @@ namespace Tethys.Silverlight.Controls.WPF
     public class CircularGaugeControl : Control
     {
         #region Private variables
+        /// <summary>
+        /// The animation speed factor.
+        /// </summary>
+        private const int AnimatingSpeedFactor = 6;
+
         /// <summary>
         /// The root grid.
         /// </summary>
@@ -100,11 +106,6 @@ namespace Tethys.Silverlight.Controls.WPF
         /// The arc radius 2.
         /// </summary>
         private double arcradius2;
-
-        /// <summary>
-        /// The animation speed factor.
-        /// </summary>
-        private int animatingSpeedFactor = 6;
         #endregion
 
         //// ---------------------------------------------------------------------
@@ -1220,7 +1221,7 @@ namespace Tethys.Silverlight.Controls.WPF
                 var realworldunit = (this.ScaleSweepAngle / (this.MaxValue - this.MinValue));
                 
                 // resetting the old value to min value the very first time.
-                if ((oldValue == 0) && !this.isInitialValueSet)
+                if ((Math.Abs(oldValue) < 0.01) && !this.isInitialValueSet)
                 {
                     oldValue = this.MinValue;
                     this.isInitialValueSet = true;
@@ -1269,7 +1270,7 @@ namespace Tethys.Silverlight.Controls.WPF
                 da.From = oldcurrentvalueAngle;
                 da.To = newcurrentvalueAngle;
 
-                var animDuration = Math.Abs(oldcurrentvalueAngle - newcurrentvalueAngle) * this.animatingSpeedFactor;
+                var animDuration = Math.Abs(oldcurrentvalueAngle - newcurrentvalueAngle) * AnimatingSpeedFactor;
                 da.Duration = new Duration(TimeSpan.FromMilliseconds(animDuration));
 
                 var sb = new Storyboard();
@@ -1341,8 +1342,8 @@ namespace Tethys.Silverlight.Controls.WPF
         private static GradientBrush GetRangeIndicatorGradEffect(Color gradientColor)
         {
             var gradient = new LinearGradientBrush();
-            gradient.StartPoint = new Point(0, 0);
-            gradient.EndPoint = new Point(1, 1);
+            gradient.StartPoint = new System.Windows.Point(0, 0);
+            gradient.EndPoint = new System.Windows.Point(1, 1);
             var color1 = new GradientStop();
             if (gradientColor == Colors.Transparent)
             {
@@ -1422,7 +1423,7 @@ namespace Tethys.Silverlight.Controls.WPF
                 majortickrect.Height = this.MajorTickSize.Height;
                 majortickrect.Width = this.MajorTickSize.Width;
                 majortickrect.Fill = new SolidColorBrush(this.MajorTickColor);
-                var p = new Point(0.5, 0.5);
+                var p = new System.Windows.Point(0.5, 0.5);
                 majortickrect.RenderTransformOrigin = p;
                 majortickrect.HorizontalAlignment = HorizontalAlignment.Center;
                 majortickrect.VerticalAlignment = VerticalAlignment.Center;
@@ -1496,7 +1497,7 @@ namespace Tethys.Silverlight.Controls.WPF
                         mr.Fill = new SolidColorBrush(this.MinorTickColor);
                         mr.HorizontalAlignment = HorizontalAlignment.Center;
                         mr.VerticalAlignment = VerticalAlignment.Center;
-                        var p1 = new Point(0.5, 0.5);
+                        var p1 = new System.Windows.Point(0.5, 0.5);
                         mr.RenderTransformOrigin = p1;
 
                         var minortickgp = new TransformGroup();
@@ -1525,15 +1526,15 @@ namespace Tethys.Silverlight.Controls.WPF
         /// </summary>
         /// <param name="angle">The angle.</param>
         /// <param name="radius">The radius.</param>
-        /// <returns>A <see cref="Point"/> on the circumference.</returns>
-        private Point GetCircumferencePoint(double angle, double radius)
+        /// <returns>A <see cref="System.Windows.Point"/> on the circumference.</returns>
+        private System.Windows.Point GetCircumferencePoint(double angle, double radius)
         {
             var angleRadian = (angle * Math.PI) / 180;
             
             // radius is the Radius of the gauge
             var x = (this.Radius) + (radius * Math.Cos(angleRadian));
             var y = (this.Radius) + (radius * Math.Sin(angleRadian));
-            var p = new Point(x, y);
+            var p = new System.Windows.Point(x, y);
             return p;
         } // GetCircumferencePoint()
 
@@ -1619,7 +1620,7 @@ namespace Tethys.Silverlight.Controls.WPF
         /// <param name="reflexangle">if set to <c>true</c> this ought to be 
         /// a large arc (more than 180°).</param>
         /// <param name="clr">The color.</param>
-        private void DrawSegment(Point p1, Point p2, Point p3, Point p4, bool reflexangle, Color clr)
+        private void DrawSegment(System.Windows.Point p1, System.Windows.Point p2, System.Windows.Point p3, System.Windows.Point p4, bool reflexangle, Color clr)
         {
             // segment Geometry
             var segments = new PathSegmentCollection();

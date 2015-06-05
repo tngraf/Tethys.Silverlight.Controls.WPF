@@ -1,14 +1,40 @@
-﻿namespace Tethys.Silverlight.Controls.WPF.Demo
+﻿#region Header
+// --------------------------------------------------------------------------
+// Tethys                    Basic Services and Resources Development Library
+// ==========================================================================
+//
+// A custom control library for WPF applications.
+//
+// ==========================================================================
+// <copyright file="TestDialogViewModel.cs" company="Tethys">
+// Copyright  2014-2015 by T. Graf
+//            All rights reserved.
+//            Licensed under the Apache License, Version 2.0.
+//            Unless required by applicable law or agreed to in writing, 
+//            software distributed under the License is distributed on an
+//            "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+//            either express or implied. 
+// </copyright>
+// 
+// System ... Microsoft .Net Framework 4.5. 
+// Tools .... Microsoft Visual Studio 2013
+//
+// ---------------------------------------------------------------------------
+#endregion
+
+namespace Tethys.Silverlight.Controls.WPF.Demo.ViewModel
 {
     using System.ComponentModel;
     using System.Diagnostics;
     using System.Runtime.CompilerServices;
     using System.Windows.Input;
 
+    using Tethys.Silverlight.Controls.WPF.Demo.Support;
+
     /// <summary>
     /// View model for the test dialog.
     /// </summary>
-    public class TestWindowViewModel : INotifyPropertyChanged
+    public class TestDialogViewModel : INotifyPropertyChanged
     {
         /// <summary>
         /// This event is raised when a property has changed.
@@ -41,16 +67,16 @@
         public ICommand WindowStateChangeCommand { get; private set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TestWindowViewModel"/> class.
+        /// Initializes a new instance of the <see cref="TestDialogViewModel"/> class.
         /// </summary>
-        public TestWindowViewModel()
+        public TestDialogViewModel()
         {
             this.LoadedCommand = new DelegateCommand(this.ExecuteLoadedCommand);
             this.ActivatedCommand = new DelegateCommand(this.ExecuteActivatedCommand);
             this.ClosingCommand = new DelegateCommand(this.ExecuteClosingCommand);
             this.ResizedCommand = new DelegateCommand(this.ExecuteResizedCommand);
             this.WindowStateChangeCommand = new DelegateCommand(this.ExecuteWindowStateChangeCommand);
-        } // TestWindowViewModel()
+        } // TestDialogViewModel()
 
         /// <summary>
         /// Raises the <see cref="PropertyChanged"/> event.
@@ -111,5 +137,5 @@
         {
             Debug.WriteLine("WindowStateChange");
         } // ExecuteWindowStateChangeCommand
-    } // TestWindowViewModel
+    } // TestDialogViewModel
 }

@@ -1,12 +1,15 @@
 ﻿<Wpf:ModernWindow 
-    x:Class="Tethys.Silverlight.Controls.WPF.Demo.TestDialog"
+    x:Class="Tethys.Silverlight.Controls.WPF.Demo.Views.TestDialog"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Wpf="clr-namespace:Tethys.Silverlight.Controls.WPF;assembly=Tethys.Silverlight.Controls.WPF"
-    xmlns:Demo="clr-namespace:Tethys.Silverlight.Controls.WPF.Demo"
+    xmlns:ViewModel="clr-namespace:Tethys.Silverlight.Controls.WPF.Demo.ViewModel"
     Title="TestDialog" 
-    BorderBrush="LightSkyBlue"
-    Icon="/Resources/OBD.ico"
+    ResizeMode="CanResizeWithGrip"
+    BorderBrush="Black"
+    
+    InnerBorderBrush="BlueViolet"
+    Icon="/Resources/Tethys.ico"
     LoadedCommand="{Binding LoadedCommand}"
     ActivatedCommand="{Binding ActivatedCommand}"
     ClosingCommand="{Binding ClosingCommand}"
@@ -14,11 +17,16 @@
     WindowStateChangeCommand="{Binding WindowStateChangeCommand}"
     ShowMinButton="True"
     ShowCloseButton="True"
-    MinHeight="200" MinWidth="200"
     Height="300" Width="300">
+    
+    <!--
+    ResizeGridBrush="Black"
+    LightSkyBlue
+    MinHeight="200" MinWidth="200"
+    -->
 
     <Wpf:ModernWindow.DataContext>
-        <Demo:TestWindowViewModel />
+        <ViewModel:TestWindowViewModel />
     </Wpf:ModernWindow.DataContext>
     
     <Wpf:ModernWindow.Resources>

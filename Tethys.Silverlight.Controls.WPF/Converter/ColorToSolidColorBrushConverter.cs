@@ -6,7 +6,7 @@
 // A custom control library for WPF applications.
 //
 // ==========================================================================
-// <copyright file="RadiusToDiameterConverter.cs" company="Tethys">
+// <copyright file="ColorToSolidColorBrushConverter.cs" company="Tethys">
 // Copyright  2015 by T. Graf (for the modifications)
 // Copyright (c) 2009 T.Evelyn (evescode@gmail.com) 
 //            All rights reserved.
@@ -41,33 +41,34 @@
 // ---------------------------------------------------------------------------
 #endregion
 
-namespace Tethys.Silverlight.Controls.WPF
+namespace Tethys.Silverlight.Controls.WPF.Converter
 {
     using System;
     using System.Globalization;
     using System.Windows.Data;
+    using System.Windows.Media;
 
     /// <summary>
-    /// Converts radius to diameter
+    /// Converts the given color to a <see cref="SolidColorBrush"/>.
     /// </summary>
-    public class RadiusToDiameterConverter : IValueConverter
+    public class ColorToSolidColorBrushConverter : IValueConverter
     {
         /// <summary>
-        /// Converts a radius to a diameter.
+        /// Converts the given color to a <see cref="SolidColorBrush"/>.
         /// </summary>
         /// <param name="value">The value produced by the binding source.</param>
         /// <param name="targetType">The type of the binding target property.</param>
         /// <param name="parameter">The converter parameter to use.</param>
         /// <param name="culture">The culture to use in the converter.</param>
         /// <returns>
-        /// A converted value. If the method returns null, the valid null value is used.
+        /// A converted value.
         /// </returns>
         public object Convert(object value, Type targetType,
             object parameter, CultureInfo culture)
         {
-            var dblVal = (double)value;
+            var c = (Color)value;
 
-            return (dblVal * 2);
+            return new SolidColorBrush(c);
         } // Convert()
 
         /// <summary>
@@ -80,10 +81,13 @@ namespace Tethys.Silverlight.Controls.WPF
         /// <returns>
         /// A converted value. If the method returns null, the valid null value is used.
         /// </returns>
-        public object ConvertBack(object value, Type targetType,
-            object parameter, CultureInfo culture)
+        public object ConvertBack(
+            object value,
+            Type targetType,
+            object parameter,
+            CultureInfo culture)
         {
             throw new NotImplementedException();
         } // ConvertBack()
-    } // RadiusToDiameterConverter
+    } // ColorToSolidColorBrushConverter
 } // Tethys.Silverlight.Controls.WPF

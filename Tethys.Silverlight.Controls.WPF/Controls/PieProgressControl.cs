@@ -22,6 +22,7 @@
 // ---------------------------------------------------------------------------
 #endregion
 
+// ReSharper disable once CheckNamespace
 namespace Tethys.Silverlight.Controls.WPF
 {
     using System;
@@ -211,7 +212,7 @@ namespace Tethys.Silverlight.Controls.WPF
 
                 if (this.lineSegment != null)
                 {
-                    this.lineSegment.Point = new Point(this.grid.Width / 2,
+                    this.lineSegment.Point = new System.Windows.Point(this.grid.Width / 2,
                         this.pathFigure.StartPoint.Y - radius);
                 } // if
             } // if
@@ -238,8 +239,8 @@ namespace Tethys.Silverlight.Controls.WPF
         /// <summary>
         /// Calculates the arc point, i.e. how far the arc shall reach.
         /// </summary>
-        /// <returns>A <see cref="Point"/>.</returns>
-        private Point CalculateArcPoint()
+        /// <returns>A <see cref="System.Windows.Point"/>.</returns>
+        private System.Windows.Point CalculateArcPoint()
         {
             // Convert the value to one between 0 and 360
             var current = (this.Value / (this.Maximum - this.Minimum)) * 360;
@@ -263,7 +264,7 @@ namespace Tethys.Silverlight.Controls.WPF
             var x = halfWidth + (radius * Math.Cos(current));
             var y = halfHeight + (radius * Math.Sin(current));
 
-            return new Point(x, y);
+            return new System.Windows.Point(x, y);
         } // CalculateArcPoint()
 
         /// <summary>
@@ -285,9 +286,9 @@ namespace Tethys.Silverlight.Controls.WPF
         /// Calculates the center point.
         /// </summary>
         /// <returns>The center point.</returns>
-        private Point CalculateCenter()
+        private System.Windows.Point CalculateCenter()
         {
-            var point = new Point(this.Width / 2, this.Height / 2);
+            var point = new System.Windows.Point(this.Width / 2, this.Height / 2);
             return point;
         } // CalculateCenter()
 

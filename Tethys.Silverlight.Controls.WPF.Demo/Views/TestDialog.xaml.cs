@@ -6,7 +6,7 @@
 // A custom control library for WPF applications.
 //
 // ==========================================================================
-// <copyright file="App.xaml.cs" company="Tethys">
+// <copyright file="TestDialog.xaml.cs" company="Tethys">
 // Copyright  2014-2015 by T. Graf
 //            All rights reserved.
 //            Licensed under the Apache License, Version 2.0.
@@ -22,12 +22,19 @@
 // ---------------------------------------------------------------------------
 #endregion
 
-namespace Tethys.Silverlight.Controls.WPF.Demo
+namespace Tethys.Silverlight.Controls.WPF.Demo.Views
 {
     /// <summary>
-    /// Interaction logic for App.
+    /// Interaction logic for TestDialog.
     /// </summary>
-    public partial class App
+    public partial class TestDialog
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TestDialog"/> class.
+        /// </summary>
+        public TestDialog()
+        {
+            this.InitializeComponent();
+        }
     }
 }

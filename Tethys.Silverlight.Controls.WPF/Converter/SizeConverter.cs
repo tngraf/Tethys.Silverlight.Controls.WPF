@@ -6,7 +6,7 @@
 // A custom control library for WPF applications.
 //
 // ==========================================================================
-// <copyright file="ColorToSolidColorBrushConverter.cs" company="Tethys">
+// <copyright file="SizeConverter.cs" company="Tethys">
 // Copyright  2015 by T. Graf (for the modifications)
 // Copyright (c) 2009 T.Evelyn (evescode@gmail.com) 
 //            All rights reserved.
@@ -41,34 +41,43 @@
 // ---------------------------------------------------------------------------
 #endregion
 
-namespace Tethys.Silverlight.Controls.WPF
+namespace Tethys.Silverlight.Controls.WPF.Converter
 {
     using System;
     using System.Globalization;
+    using System.Windows;
     using System.Windows.Data;
-    using System.Windows.Media;
 
     /// <summary>
-    /// Converts the given color to a <see cref="SolidColorBrush"/>.
+    /// Converts the given size to height and width.
     /// </summary>
-    public class ColorToSolidColorBrushConverter : IValueConverter
+    public class SizeConverter : IValueConverter
     {
         /// <summary>
-        /// Converts the given color to a <see cref="SolidColorBrush"/>.
+        /// Converts the given size to height and width.
         /// </summary>
         /// <param name="value">The value produced by the binding source.</param>
         /// <param name="targetType">The type of the binding target property.</param>
         /// <param name="parameter">The converter parameter to use.</param>
         /// <param name="culture">The culture to use in the converter.</param>
         /// <returns>
-        /// A converted value.
+        /// A converted value. If the method returns null, the valid null value is used.
         /// </returns>
         public object Convert(object value, Type targetType,
             object parameter, CultureInfo culture)
         {
-            var c = (Color)value;
+            double i = 0;
+            var s = (Size)value;
+            if (parameter.ToString() == "Height")
+            {
+                i = s.Height;
+            }
+            else if (parameter.ToString() == "Width")
+            {
+                i = s.Width;
+            } // if
 
-            return new SolidColorBrush(c);
+            return i;
         } // Convert()
 
         /// <summary>
@@ -81,13 +90,10 @@ namespace Tethys.Silverlight.Controls.WPF
         /// <returns>
         /// A converted value. If the method returns null, the valid null value is used.
         /// </returns>
-        public object ConvertBack(
-            object value,
-            Type targetType,
-            object parameter,
-            CultureInfo culture)
+        public object ConvertBack(object value, Type targetType,
+            object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
         } // ConvertBack()
-    } // ColorToSolidColorBrushConverter
-} // Tethys.Silverlight.Controls.WPF
+    } // SizeConverter
+} // Tethys.Silverlight.Controls.WPFs

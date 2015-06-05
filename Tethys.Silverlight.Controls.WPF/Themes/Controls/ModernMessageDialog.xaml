@@ -25,53 +25,9 @@
                     xmlns:local="clr-namespace:Tethys.Silverlight.Controls.WPF">
     
     <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
-    
-    <!--  Button style -->
-    <Style TargetType="{x:Type Button}" x:Key="WindowButtonStyle">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type ButtonBase}">
-                    <Border x:Name="Chrome"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            Margin="0"
-                            Background="{TemplateBinding Background}"
-                            SnapsToDevicePixels="True"> 
-                        <ContentPresenter
-                                ContentTemplate="{TemplateBinding ContentTemplate}"
-                                Content="{TemplateBinding Content}"
-                                ContentStringFormat="{TemplateBinding ContentStringFormat}"
-                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                Margin="{TemplateBinding Padding}"
-                                RecognizesAccessKey="True"
-                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-        <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="FontFamily" Value="Webdings"/>
-        <Setter Property="FontSize" Value="13.333" />
-        <Setter Property="Foreground" Value="Black" />
-        <Setter Property="Margin" Value="0,2,3,0"/>
-        <Style.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="LightGray" />
-            </Trigger>
-        </Style.Triggers>
-    </Style>
-
-    <Style TargetType="{x:Type Button}" x:Key="WindowCloseButtonStyle"
-           BasedOn="{StaticResource WindowButtonStyle}">
-        <Style.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="Crimson" />
-            </Trigger>
-        </Style.Triggers>
-    </Style>
 
     <!-- Window style -->
-    <Style TargetType="{x:Type local:ModernWindow}">
+    <Style TargetType="{x:Type local:ModernMessageDialog}">
         <Setter Property="WindowStyle" Value="None"/>
         <Setter Property="UseLayoutRounding" Value="True" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
@@ -81,7 +37,7 @@
         <Setter Property="BorderBrush" Value="White"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type local:ModernWindow}">
+                <ControlTemplate TargetType="{x:Type local:ModernMessageDialog}">
                     <Border x:Name="OuterBorder"
                         BorderThickness="{TemplateBinding BorderThickness}"
                         BorderBrush="Black"

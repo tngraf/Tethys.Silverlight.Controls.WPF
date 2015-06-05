@@ -6,7 +6,7 @@
 // A custom control library for WPF applications.
 //
 // ==========================================================================
-// <copyright file="PointerCenterConverter.cs" company="Tethys">
+// <copyright file="GlassEffectWidthConverter.cs" company="Tethys">
 // Copyright  2015 by T. Graf (for the modifications)
 // Copyright (c) 2009 T.Evelyn (evescode@gmail.com) 
 //            All rights reserved.
@@ -41,20 +41,20 @@
 // ---------------------------------------------------------------------------
 #endregion
 
-namespace Tethys.Silverlight.Controls.WPF
+namespace Tethys.Silverlight.Controls.WPF.Converter
 {
     using System;
     using System.Globalization;
     using System.Windows.Data;
-    using System.Windows.Media;
-    
+
     /// <summary>
-    /// Calculates the pointer position.
+    /// Scaling factor for drawing the glass effect.
     /// </summary>
-    public class PointerCenterConverter : IValueConverter
+    public class GlassEffectWidthConverter : IValueConverter
     {
         /// <summary>
-        /// Converts a double value to a translate transformation.
+        /// Converts the given value to a scaling factor for drawing the 
+        /// glass effect.
         /// </summary>
         /// <param name="value">The value produced by the binding source.</param>
         /// <param name="targetType">The type of the binding target property.</param>
@@ -66,16 +66,8 @@ namespace Tethys.Silverlight.Controls.WPF
         public object Convert(object value, Type targetType,
             object parameter, CultureInfo culture)
         {
-            var dblVal = (double)value;
-            var tg = new TransformGroup();
-            var rt = new RotateTransform();
-            var tt = new TranslateTransform();
-
-            tt.X = dblVal / 2;
-            tg.Children.Add(rt);
-            tg.Children.Add(tt);
-
-            return tg;
+            var dbl = (double)value;
+            return (dbl * 2) * 0.94;
         } // Convert()
 
         /// <summary>
@@ -93,5 +85,5 @@ namespace Tethys.Silverlight.Controls.WPF
         {
             throw new NotImplementedException();
         } // ConvertBack()
-    } // PointerCenterConverter
-} // Tethys.Silverlight.Controls.WPF
+    } // GlassEffectWidthConverter
+} // Tethys.Silverlight.Controls.WPFs

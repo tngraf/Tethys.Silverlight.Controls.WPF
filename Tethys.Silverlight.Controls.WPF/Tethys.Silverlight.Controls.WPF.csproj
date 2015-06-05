@@ -47,35 +47,41 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ColorToSolidColorBrushConverter.cs" />
-    <Compile Include="ImageOffsetConverter.cs" />
-    <Compile Include="RadiusToDiameterConverter.cs" />
-    <Compile Include="PointerCenterConverter.cs" />
-    <Compile Include="RangeIndicatorLightPositionConverter.cs" />
-    <Compile Include="SizeConverter.cs" />
-    <Compile Include="GlassEffectWidthConverter.cs" />
-    <Compile Include="BackgroundColorConverter.cs" />
-    <Compile Include="DialTextPositionConverter.cs" />
+    <Compile Include="Converter\ColorToSolidColorBrushConverter.cs" />
+    <Compile Include="Converter\ImageOffsetConverter.cs" />
+    <Compile Include="Controls\ModernMessageDialog.cs" />
+    <Compile Include="NativeMethods.cs" />
+    <Compile Include="Converter\RadiusToDiameterConverter.cs" />
+    <Compile Include="Converter\PointerCenterConverter.cs" />
+    <Compile Include="Converter\RangeIndicatorLightPositionConverter.cs" />
+    <Compile Include="Converter\SizeConverter.cs" />
+    <Compile Include="Converter\GlassEffectWidthConverter.cs" />
+    <Compile Include="Converter\BackgroundColorConverter.cs" />
+    <Compile Include="Converter\DialTextPositionConverter.cs" />
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="CircularGaugeControl.cs" />
-    <Compile Include="ModernWindow.cs" />
-    <Compile Include="PieProgressControl.cs" />
+    <Compile Include="Controls\CircularGaugeControl.cs" />
+    <Compile Include="Controls\ModernWindow.cs" />
+    <Compile Include="Controls\PieProgressControl.cs" />
     <Page Include="Themes\MasterDictionary.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Themes\ModernWindow.xaml">
+    <Page Include="Themes\Controls\ModernMessageDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Themes\CircularGaugeControl.xaml">
+    <Page Include="Themes\Controls\ModernWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Themes\PieProgressControl.xaml">
+    <Page Include="Themes\Controls\CircularGaugeControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Controls\PieProgressControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -6,7 +6,7 @@
 // A custom control library for WPF applications.
 //
 // ==========================================================================
-// <copyright file="SizeConverter.cs" company="Tethys">
+// <copyright file="ImageOffsetConverter.cs" company="Tethys">
 // Copyright  2015 by T. Graf (for the modifications)
 // Copyright (c) 2009 T.Evelyn (evescode@gmail.com) 
 //            All rights reserved.
@@ -41,20 +41,20 @@
 // ---------------------------------------------------------------------------
 #endregion
 
-namespace Tethys.Silverlight.Controls.WPF
+namespace Tethys.Silverlight.Controls.WPF.Converter
 {
     using System;
     using System.Globalization;
-    using System.Windows;
     using System.Windows.Data;
+    using System.Windows.Media;
 
-    /// <summary>
-    /// Converts the given size to height and width.
-    /// </summary>
-    public class SizeConverter : IValueConverter
+    /// <summary>   
+    /// A type converter for converting image offset into render transform.
+    /// </summary>   
+    public class ImageOffsetConverter : IValueConverter
     {
         /// <summary>
-        /// Converts the given size to height and width.
+        /// Converts an image offset into a render transform.
         /// </summary>
         /// <param name="value">The value produced by the binding source.</param>
         /// <param name="targetType">The type of the binding target property.</param>
@@ -66,18 +66,10 @@ namespace Tethys.Silverlight.Controls.WPF
         public object Convert(object value, Type targetType,
             object parameter, CultureInfo culture)
         {
-            double i = 0;
-            var s = (Size)value;
-            if (parameter.ToString() == "Height")
-            {
-                i = s.Height;
-            }
-            else if (parameter.ToString() == "Width")
-            {
-                i = s.Width;
-            } // if
-
-            return i;
+            var dblVal = (double)value;
+            var tt = new TranslateTransform();
+            tt.Y = dblVal;
+            return tt;
         } // Convert()
 
         /// <summary>
@@ -95,5 +87,5 @@ namespace Tethys.Silverlight.Controls.WPF
         {
             throw new NotImplementedException();
         } // ConvertBack()
-    } // SizeConverter
-} // Tethys.Silverlight.Controls.WPFs
+    } // ImageOffsetConverter
+} // Tethys.Silverlight.Controls.WPF

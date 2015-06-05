@@ -6,7 +6,7 @@
 // A custom control library for WPF applications.
 //
 // ==========================================================================
-// <copyright file="GlassEffectWidthConverter.cs" company="Tethys">
+// <copyright file="RadiusToDiameterConverter.cs" company="Tethys">
 // Copyright  2015 by T. Graf (for the modifications)
 // Copyright (c) 2009 T.Evelyn (evescode@gmail.com) 
 //            All rights reserved.
@@ -41,20 +41,19 @@
 // ---------------------------------------------------------------------------
 #endregion
 
-namespace Tethys.Silverlight.Controls.WPF
+namespace Tethys.Silverlight.Controls.WPF.Converter
 {
     using System;
     using System.Globalization;
     using System.Windows.Data;
 
     /// <summary>
-    /// Scaling factor for drawing the glass effect.
+    /// Converts radius to diameter
     /// </summary>
-    public class GlassEffectWidthConverter : IValueConverter
+    public class RadiusToDiameterConverter : IValueConverter
     {
         /// <summary>
-        /// Converts the given value to a scaling factor for drawing the 
-        /// glass effect.
+        /// Converts a radius to a diameter.
         /// </summary>
         /// <param name="value">The value produced by the binding source.</param>
         /// <param name="targetType">The type of the binding target property.</param>
@@ -66,8 +65,9 @@ namespace Tethys.Silverlight.Controls.WPF
         public object Convert(object value, Type targetType,
             object parameter, CultureInfo culture)
         {
-            var dbl = (double)value;
-            return (dbl * 2) * 0.94;
+            var dblVal = (double)value;
+
+            return (dblVal * 2);
         } // Convert()
 
         /// <summary>
@@ -85,5 +85,5 @@ namespace Tethys.Silverlight.Controls.WPF
         {
             throw new NotImplementedException();
         } // ConvertBack()
-    } // GlassEffectWidthConverter
-} // Tethys.Silverlight.Controls.WPFs
+    } // RadiusToDiameterConverter
+} // Tethys.Silverlight.Controls.WPF

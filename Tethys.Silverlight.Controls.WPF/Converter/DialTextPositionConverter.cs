@@ -6,7 +6,7 @@
 // A custom control library for WPF applications.
 //
 // ==========================================================================
-// <copyright file="ImageOffsetConverter.cs" company="Tethys">
+// <copyright file="DialTextPositionConverter.cs" company="Tethys">
 // Copyright  2015 by T. Graf (for the modifications)
 // Copyright (c) 2009 T.Evelyn (evescode@gmail.com) 
 //            All rights reserved.
@@ -41,51 +41,60 @@
 // ---------------------------------------------------------------------------
 #endregion
 
-namespace Tethys.Silverlight.Controls.WPF
+namespace Tethys.Silverlight.Controls.WPF.Converter
 {
     using System;
     using System.Globalization;
     using System.Windows.Data;
     using System.Windows.Media;
 
-    /// <summary>   
-    /// A type converter for converting image offset into render transform.
-    /// </summary>   
-    public class ImageOffsetConverter : IValueConverter
+    /// <summary>
+    /// Calculates the dial text position
+    /// </summary>
+    public class DialTextPositionConverter : IMultiValueConverter
     {
         /// <summary>
-        /// Converts an image offset into a render transform.
+        /// Converts a given x and y value to a render transform.
         /// </summary>
-        /// <param name="value">The value produced by the binding source.</param>
+        /// <param name="values">The array of values that the source bindings in the 
+        /// <see cref="T:System.Windows.Data.MultiBinding" /> produces. </param>
         /// <param name="targetType">The type of the binding target property.</param>
         /// <param name="parameter">The converter parameter to use.</param>
         /// <param name="culture">The culture to use in the converter.</param>
         /// <returns>
-        /// A converted value. If the method returns null, the valid null value is used.
+        /// A converted value.
         /// </returns>
-        public object Convert(object value, Type targetType,
+        public object Convert(object[] values, Type targetType,
             object parameter, CultureInfo culture)
         {
-            var dblVal = (double)value;
+            var x = (double)values[0];
+            var y = (double)values[1];
+            var tg = new TransformGroup();
+            var rt = new RotateTransform();
             var tt = new TranslateTransform();
-            tt.Y = dblVal;
-            return tt;
+
+            tt.X = x;
+            tt.Y = y;
+            tg.Children.Add(rt);
+            tg.Children.Add(tt);
+
+            return tg;
         } // Convert()
 
         /// <summary>
         /// Backwards conversion is NOT supported.
         /// </summary>
         /// <param name="value">The value that is produced by the binding target.</param>
-        /// <param name="targetType">The type to convert to.</param>
+        /// <param name="targetTypes">The type to convert to.</param>
         /// <param name="parameter">The converter parameter to use.</param>
         /// <param name="culture">The culture to use in the converter.</param>
         /// <returns>
         /// A converted value. If the method returns null, the valid null value is used.
         /// </returns>
-        public object ConvertBack(object value, Type targetType,
+        public object[] ConvertBack(object value, Type[] targetTypes,
             object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
         } // ConvertBack()
-    } // ImageOffsetConverter
-} // Tethys.Silverlight.Controls.WPF
+    } // DialTextPositionConverter
+} // Tethys.Silverlight.Controls.WPFs
