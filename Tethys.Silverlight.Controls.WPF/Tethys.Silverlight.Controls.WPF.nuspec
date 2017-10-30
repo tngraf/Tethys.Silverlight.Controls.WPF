@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Tethys.Silverlight.Controls.WPF</id>
+    <version>2.0.0</version>
+    <title>Tethys.Silverlight.Controls.WPF</title>
+    <authors>Thomas Graf</authors>
+    <owners>Thomas Graf</owners>
+	<copyright>Copyright (C) 2015-2017 T. Graf</copyright>
+    <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
+    <projectUrl>https://github.com/tngraf/Tethys.Silverlight.Controls.WPF</projectUrl>
+    <iconUrl>http://www.4wp7.de/tethys/tethyb32.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Custom themes and custom controls for WPF</description>
+    <releaseNotes></releaseNotes>
+    <language>en-US</language>
+    <tags>Tethys Silverlight WPF Control Theme</tags>
+  </metadata>
+  <files>
+    <file src="bin\Release\Tethys.Silverlight.Controls.WPF.pdb" target="lib\net45" />
+  </files> 
+</package>

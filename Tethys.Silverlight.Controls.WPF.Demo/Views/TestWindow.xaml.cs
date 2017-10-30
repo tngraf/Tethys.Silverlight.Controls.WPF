@@ -6,7 +6,7 @@
 // A custom control library for WPF applications.
 //
 // ==========================================================================
-// <copyright file="App.xaml.cs" company="Tethys">
+// <copyright file="TestWindow.xaml.cs" company="Tethys">
 // Copyright  2014-2015 by T. Graf
 //            All rights reserved.
 //            Licensed under the Apache License, Version 2.0.
@@ -22,26 +22,19 @@
 // ---------------------------------------------------------------------------
 #endregion
 
-namespace Tethys.Silverlight.Controls.WPF.Demo
+namespace Tethys.Silverlight.Controls.WPF.Demo.Views
 {
-    using System.Windows;
-
     /// <summary>
-    /// Interaction logic for App.
+    /// Interaction logic for TestDialog.
     /// </summary>
-    public partial class App
+    public partial class TestWindow
     {
         /// <summary>
-        /// Called at startup of the application.
+        /// Initializes a new instance of the <see cref="TestWindow"/> class.
         /// </summary>
-        /// <param name="e">A <see cref="T:System.Windows.StartupEventArgs" /> 
-        /// that contains the event data.</param>
-        protected override void OnStartup(StartupEventArgs e)
+        public TestWindow()
         {
-            base.OnStartup(e);
-
-            //ThemeManager.Current.SetLightTheme();
-            ThemeManager.Current.SetDarkTheme();
-        } // OnStartup()
-    } // App
-} // Tethys.Silverlight.Controls.WPF.Demo
+            this.InitializeComponent();
+        }
+    }
+}

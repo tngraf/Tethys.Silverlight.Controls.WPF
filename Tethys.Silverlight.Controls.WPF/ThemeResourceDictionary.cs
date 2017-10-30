@@ -6,8 +6,8 @@
 // A custom control library for WPF applications.
 //
 // ==========================================================================
-// <copyright file="App.xaml.cs" company="Tethys">
-// Copyright  2014-2015 by T. Graf
+// <copyright file="ThemeResourceDictionary.cs" company="Tethys">
+// Copyright  2015 by T. Graf
 //            All rights reserved.
 //            Licensed under the Apache License, Version 2.0.
 //            Unless required by applicable law or agreed to in writing, 
@@ -22,26 +22,14 @@
 // ---------------------------------------------------------------------------
 #endregion
 
-namespace Tethys.Silverlight.Controls.WPF.Demo
+namespace Tethys.Silverlight.Controls.WPF
 {
     using System.Windows;
 
     /// <summary>
-    /// Interaction logic for App.
+    /// A <see cref="ResourceDictionary"/> type that we can identify.
     /// </summary>
-    public partial class App
+    public class ThemeResourceDictionary : ResourceDictionary
     {
-        /// <summary>
-        /// Called at startup of the application.
-        /// </summary>
-        /// <param name="e">A <see cref="T:System.Windows.StartupEventArgs" /> 
-        /// that contains the event data.</param>
-        protected override void OnStartup(StartupEventArgs e)
-        {
-            base.OnStartup(e);
-
-            //ThemeManager.Current.SetLightTheme();
-            ThemeManager.Current.SetDarkTheme();
-        } // OnStartup()
-    } // App
-} // Tethys.Silverlight.Controls.WPF.Demo
+    } // ThemeResourceDictionary()
+}

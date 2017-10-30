@@ -1,0 +1,58 @@
+﻿<Wpf:ModernMessageDialog 
+    x:Class="Tethys.Silverlight.Controls.WPF.Demo.Views.TestDialog2"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Wpf="clr-namespace:Tethys.Silverlight.Controls.WPF;assembly=Tethys.Silverlight.Controls.WPF"
+    xmlns:ViewModel="clr-namespace:Tethys.Silverlight.Controls.WPF.Demo.ViewModel"
+    Title="TestDialog" 
+    ResizeMode="NoResize"
+    TitleBrush="White"
+    BorderBrush="White"
+    BottomBrush="White"
+    InnerBorderBrush="Black"
+    BorderThickness="1"
+    LoadedCommand="{Binding LoadedCommand}"
+    ShowMinButton="True"
+    ShowCloseButton="True"
+    Button1Text="Yes"
+    Button2Text="No"
+    SizeToContent="WidthAndHeight">
+
+    <Wpf:ModernWindow.DataContext>
+        <ViewModel:TestWindowViewModel />
+    </Wpf:ModernWindow.DataContext>
+    
+    <Wpf:ModernWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Tethys.Silverlight.Controls.WPF;component/Themes/Generic.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Tethys.Silverlight.Controls.WPF;component/Themes/MessageBoxSymbols.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Wpf:ModernWindow.Resources>
+    
+    <Border
+        x:Name="MainBorder"
+        MinHeight="70">
+        <Grid
+            x:Name="MainGrid">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid
+                Grid.Row="0"
+                x:Name="ContentGrid"
+                Margin="8">
+                
+                <TextBlock 
+                    Grid.Row="0"
+                    Text="Do you like this message box style?" />
+            </Grid>
+        </Grid>
+    </Border>
+    
+    
+</Wpf:ModernMessageDialog>

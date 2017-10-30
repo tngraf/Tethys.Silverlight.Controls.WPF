@@ -1,12 +1,12 @@
 ﻿#region Header
 // --------------------------------------------------------------------------
-// Tethys                    Basic Services and Resources Development Library
+// Tethys.Silverlight.Controls.WPF
 // ==========================================================================
 //
 // A custom control library for WPF applications.
 //
 // ==========================================================================
-// <copyright file="App.xaml.cs" company="Tethys">
+// <copyright file="DataGridData.cs" company="Tethys">
 // Copyright  2014-2015 by T. Graf
 //            All rights reserved.
 //            Licensed under the Apache License, Version 2.0.
@@ -22,26 +22,13 @@
 // ---------------------------------------------------------------------------
 #endregion
 
-namespace Tethys.Silverlight.Controls.WPF.Demo
+namespace Tethys.Silverlight.Controls.WPF.Demo.ViewModel
 {
-    using System.Windows;
-
-    /// <summary>
-    /// Interaction logic for App.
-    /// </summary>
-    public partial class App
+    public class DataGridData
     {
-        /// <summary>
-        /// Called at startup of the application.
-        /// </summary>
-        /// <param name="e">A <see cref="T:System.Windows.StartupEventArgs" /> 
-        /// that contains the event data.</param>
-        protected override void OnStartup(StartupEventArgs e)
-        {
-            base.OnStartup(e);
-
-            //ThemeManager.Current.SetLightTheme();
-            ThemeManager.Current.SetDarkTheme();
-        } // OnStartup()
-    } // App
-} // Tethys.Silverlight.Controls.WPF.Demo
+        public string Column1 { get; set; }
+        public string Column2 { get; set; }
+        public string Column3 { get; set; }
+        public string Column4 { get; set; }
+    }
+}

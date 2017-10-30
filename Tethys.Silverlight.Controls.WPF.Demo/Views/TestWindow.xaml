@@ -1,0 +1,227 @@
+﻿<Wpf:ModernWindow 
+    x:Name="ThisWindow"
+    x:Class="Tethys.Silverlight.Controls.WPF.Demo.Views.TestWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Wpf="clr-namespace:Tethys.Silverlight.Controls.WPF;assembly=Tethys.Silverlight.Controls.WPF"
+    xmlns:ViewModel="clr-namespace:Tethys.Silverlight.Controls.WPF.Demo.ViewModel"
+    Title="TestDialog" 
+    ResizeMode="CanResizeWithGrip"
+    BorderBrush="Blue"
+    ResizeGridBrush="Black"
+    InnerBorderBrush="Red"
+    TitleBrush="DeepSkyBlue"
+    MinHeight="200" MinWidth="200"
+    Icon="/Resources/Flag.ico"
+    LargeIcon="True"
+    LoadedCommand="{Binding LoadedCommand}"
+    ActivatedCommand="{Binding ActivatedCommand}"
+    ClosingCommand="{Binding ClosingCommand}"
+    ResizedCommand="{Binding ResizedCommand}"
+    WindowStateChangeCommand="{Binding WindowStateChangeCommand}"
+    ShowMinButton="True"
+    ShowCloseButton="True"
+    Height="400" Width="450">
+
+    <Wpf:ModernWindow.DataContext>
+        <ViewModel:TestWindowViewModel />
+    </Wpf:ModernWindow.DataContext>
+    
+    <Wpf:ModernWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Tethys.Silverlight.Controls.WPF;component/Themes/Generic.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Wpf:ModernWindow.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
+        <Label 
+            Grid.Row="0" 
+            Content="Window Properties"
+            FontWeight="Bold"/>
+        
+        <StackPanel
+            Grid.Row="1"
+            Orientation="Horizontal">
+            <TextBlock
+                Width="150" 
+                Margin="4"
+                HorizontalAlignment="Left"
+                Text="WindowBackgroundColor"/>
+            <Border
+                Margin="4"
+                Width="100"
+                BorderBrush="DarkGray"
+                BorderThickness="1"
+                Background="{Binding ElementName=ThisWindow, Path=Background}"/>
+        </StackPanel>
+
+        <StackPanel
+            Grid.Row="2"
+            Orientation="Horizontal">
+            <TextBlock 
+                Width="150" 
+                Margin="4"
+                HorizontalAlignment="Left"
+                Text="WindowForegroundColor" />
+            <Border
+                Margin="4"
+                Width="100"
+                BorderBrush="DarkGray"
+                BorderThickness="1"
+                Background="{Binding ElementName=ThisWindow, Path=Foreground}"/>
+        </StackPanel>
+
+        <StackPanel
+            Grid.Row="3"
+            Orientation="Horizontal">
+            <TextBlock 
+                Width="150" 
+                Margin="4"
+                HorizontalAlignment="Left"
+                Text="BorderBrush" />
+            <Border
+                Margin="4"
+                Width="100"
+                BorderBrush="DarkGray"
+                BorderThickness="1"
+                Background="{Binding ElementName=ThisWindow, Path=BorderBrush}"/>
+        </StackPanel>
+
+        <StackPanel
+            Grid.Row="4"
+            Orientation="Horizontal">
+            <TextBlock 
+                Width="150" 
+                Margin="4"
+                HorizontalAlignment="Left"
+                Text="InnerBorderBrush" />
+            <Border
+                Margin="4"
+                Width="100"
+                BorderBrush="DarkGray"
+                BorderThickness="1"
+                Background="{Binding ElementName=ThisWindow, Path=InnerBorderBrush}"/>
+        </StackPanel>
+
+        <StackPanel
+            Grid.Row="5"
+            Orientation="Horizontal">
+            <TextBlock 
+                Width="150" 
+                Margin="4"
+                HorizontalAlignment="Left"
+                Text="TitleBrush" />
+            <Border
+                Margin="4"
+                Width="100"
+                BorderBrush="DarkGray"
+                BorderThickness="1"
+                Background="{Binding ElementName=ThisWindow, Path=TitleBrush}"/>
+        </StackPanel>
+
+        <StackPanel
+            Grid.Row="6"
+            Orientation="Horizontal">
+            <TextBlock 
+                Width="150" 
+                Margin="4"
+                HorizontalAlignment="Left"
+                Text="ControlBrush" />
+            <Border
+                Margin="4"
+                Width="100"
+                BorderBrush="DarkGray"
+                BorderThickness="1"
+                Background="{Binding ElementName=ThisWindow, Path=ControlBrush}"/>
+        </StackPanel>
+
+        <StackPanel
+            Grid.Row="7"
+            Orientation="Horizontal">
+            <TextBlock 
+                Width="150" 
+                Margin="4"
+                HorizontalAlignment="Left"
+                Text="ResizeGridBrush" />
+            <Border
+                Margin="4"
+                Width="100"
+                BorderBrush="DarkGray"
+                BorderThickness="1"
+                Background="{Binding ElementName=ThisWindow, Path=ResizeGridBrush}"/>
+        </StackPanel>
+
+        <StackPanel
+            Grid.Row="8"
+            Orientation="Horizontal">
+            <TextBlock 
+                Margin="4"
+                Text="Window Title" />
+            <TextBox 
+                Width="200"
+                Margin="0,2,0,2"
+                Text="{Binding ElementName=ThisWindow, Path=Title, Mode=TwoWay, 
+                  UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
+
+        <StackPanel
+            Grid.Row="9"
+            Orientation="Horizontal">
+            <TextBlock
+                Margin="4"
+                Text="Border Thickness" />
+            <TextBox
+                Width="70"
+                Margin="0,2,0,2"
+                Text="{Binding ElementName=ThisWindow, Path=BorderThickness}" />
+        </StackPanel>
+
+        <CheckBox
+            Grid.Row="10"
+            Content="ShowMinButton"
+            IsChecked="{Binding ElementName=ThisWindow, Path=ShowMinButton}"/>
+
+        <CheckBox
+            Grid.Row="11"
+            Content="ShowCloseButton"
+            IsChecked="{Binding ElementName=ThisWindow, Path=ShowCloseButton}"/>
+
+        <CheckBox
+            Grid.Row="12"
+            Content="LargeIcon"
+            IsChecked="{Binding ElementName=ThisWindow, Path=LargeIcon}"/>
+
+        <StackPanel
+            Grid.Row="13"
+            Orientation="Horizontal">
+            <TextBlock 
+                Text="Resize Mode:"
+                VerticalAlignment="Center"/>
+            <ComboBox
+                Margin="4,0,0,0"
+                Width="160"
+                ItemsSource="{Binding ResizeModes}"
+                SelectedItem="{Binding ElementName=ThisWindow, Path=ResizeMode}" />
+        </StackPanel>
+        
+    </Grid>
+</Wpf:ModernWindow>
