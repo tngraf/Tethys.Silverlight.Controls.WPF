@@ -1,6 +1,6 @@
 ﻿#region Header
 // --------------------------------------------------------------------------
-// Tethys                    Basic Services and Resources Development Library
+// Tethys.Silverlight.Controls.WPF
 // ==========================================================================
 //
 // A custom control library for WPF applications.
@@ -33,7 +33,7 @@ using System.Windows;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Tethys.Silverlight.Controls.WPF")]
-[assembly: AssemblyCopyright("Copyright ©  2015 T. Graf")]
+[assembly: AssemblyCopyright("Copyright © 2015-2017 T. Graf")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

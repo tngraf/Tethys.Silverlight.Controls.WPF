@@ -1,6 +1,6 @@
 ﻿#region Header
 // --------------------------------------------------------------------------
-// Tethys                    Basic Services and Resources Development Library
+// Tethys.Silverlight.Controls.WPF
 // ==========================================================================
 //
 // A custom control library for WPF applications.

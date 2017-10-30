@@ -1,6 +1,6 @@
 ﻿#region Header
 // --------------------------------------------------------------------------
-// Tethys                    Basic Services and Resources Development Library
+// Tethys.Silverlight.Controls.WPF
 // ==========================================================================
 //
 // A custom control library for WPF applications.
@@ -212,7 +212,7 @@ namespace Tethys.Silverlight.Controls.WPF
 
                 if (this.lineSegment != null)
                 {
-                    this.lineSegment.Point = new System.Windows.Point(this.grid.Width / 2,
+                    this.lineSegment.Point = new Point(this.grid.Width / 2,
                         this.pathFigure.StartPoint.Y - radius);
                 } // if
             } // if
@@ -240,7 +240,7 @@ namespace Tethys.Silverlight.Controls.WPF
         /// Calculates the arc point, i.e. how far the arc shall reach.
         /// </summary>
         /// <returns>A <see cref="System.Windows.Point"/>.</returns>
-        private System.Windows.Point CalculateArcPoint()
+        private Point CalculateArcPoint()
         {
             // Convert the value to one between 0 and 360
             var current = (this.Value / (this.Maximum - this.Minimum)) * 360;
@@ -264,7 +264,7 @@ namespace Tethys.Silverlight.Controls.WPF
             var x = halfWidth + (radius * Math.Cos(current));
             var y = halfHeight + (radius * Math.Sin(current));
 
-            return new System.Windows.Point(x, y);
+            return new Point(x, y);
         } // CalculateArcPoint()
 
         /// <summary>
@@ -286,9 +286,9 @@ namespace Tethys.Silverlight.Controls.WPF
         /// Calculates the center point.
         /// </summary>
         /// <returns>The center point.</returns>
-        private System.Windows.Point CalculateCenter()
+        private Point CalculateCenter()
         {
-            var point = new System.Windows.Point(this.Width / 2, this.Height / 2);
+            var point = new Point(this.Width / 2, this.Height / 2);
             return point;
         } // CalculateCenter()
 

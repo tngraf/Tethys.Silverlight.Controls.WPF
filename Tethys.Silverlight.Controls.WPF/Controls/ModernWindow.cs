@@ -1,6 +1,6 @@
 ﻿#region Header
 // --------------------------------------------------------------------------
-// Tethys                    Basic Services and Resources Development Library
+// Tethys.Silverlight.Controls.WPF
 // ==========================================================================
 //
 // A custom control library for WPF applications.
@@ -56,7 +56,7 @@ namespace Tethys.Silverlight.Controls.WPF
     [TemplatePart(Name = PartResizeGridName, Type = typeof(FrameworkElement))]
     public class ModernWindow : Window
     {
-        #region PRIVATE PROPERTIES        
+        #region PRIVATE PROPERTIES
         /// <summary>
         /// The part outer border name.
         /// </summary>

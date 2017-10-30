@@ -1,49 +1,91 @@
-﻿<Wpf:ModernWindow 
+﻿<Wpf:ModernMessageDialog 
     x:Class="Tethys.Silverlight.Controls.WPF.Demo.Views.TestDialog"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Wpf="clr-namespace:Tethys.Silverlight.Controls.WPF;assembly=Tethys.Silverlight.Controls.WPF"
     xmlns:ViewModel="clr-namespace:Tethys.Silverlight.Controls.WPF.Demo.ViewModel"
     Title="TestDialog" 
-    ResizeMode="CanResizeWithGrip"
-    BorderBrush="Black"
-    
-    InnerBorderBrush="BlueViolet"
-    Icon="/Resources/Tethys.ico"
+    ResizeMode="NoResize"
+    TitleBrush="SkyBlue"
+    BorderBrush="Red"
+    BottomBrush="SkyBlue"
+    InnerBorderBrush="SkyBlue"
+    BorderThickness="5"
     LoadedCommand="{Binding LoadedCommand}"
-    ActivatedCommand="{Binding ActivatedCommand}"
-    ClosingCommand="{Binding ClosingCommand}"
-    ResizedCommand="{Binding ResizedCommand}"
-    WindowStateChangeCommand="{Binding WindowStateChangeCommand}"
     ShowMinButton="True"
     ShowCloseButton="True"
-    Height="300" Width="300">
-    
-    <!--
-    ResizeGridBrush="Black"
-    LightSkyBlue
-    MinHeight="200" MinWidth="200"
-    -->
+    Button1Text="OK"
+    Button2Text="Cancel"
+    SizeToContent="WidthAndHeight">
 
     <Wpf:ModernWindow.DataContext>
         <ViewModel:TestWindowViewModel />
     </Wpf:ModernWindow.DataContext>
-    
+
     <Wpf:ModernWindow.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/Tethys.Silverlight.Controls.WPF;component/Themes/Generic.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Tethys.Silverlight.Controls.WPF;component/Themes/MessageBoxSymbols.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Wpf:ModernWindow.Resources>
-    
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-        
-        <Label Grid.Row="0" Content="Some Label" />
-        <Button Grid.Row="1" Content="Some Button" />
-    </Grid>
-</Wpf:ModernWindow>
+
+    <!--
+    BorderBrush="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Wpf:ModernWindow}}, Path=TitleBrush}"
+    -->
+    <Border
+        x:Name="MainBorder"
+        MinHeight="150">
+        <Grid
+            x:Name="MainGrid">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid
+                Grid.Row="0"
+                x:Name="ContentGrid"
+                Background="BlueViolet"
+                Margin="8">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Border
+                    Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"
+                    x:Name="Symbol"
+                    VerticalAlignment="Top"
+                    Margin="0,0,24,0"
+                    Height="48" Width="48"
+                    Visibility="Visible"
+                    Background="{StaticResource SymbolError}" />
+                <!--
+                    Background="{Binding DialogBoxSymbol, 
+                    Converter={StaticResource MessageBoxSymbolConverter}}" />
+                -->
+
+                <TextBlock 
+                    Grid.Row="0" Grid.Column="1" 
+                    FontWeight="Bold"
+                    Text="Some Header" />
+
+                <TextBlock 
+                    Grid.Row="1" Grid.Column="1" 
+                    Margin="0,16,0,0"
+                    TextWrapping="Wrap"
+                    Text="Some long text" />
+            </Grid>
+        </Grid>
+    </Border>
+
+
+</Wpf:ModernMessageDialog>

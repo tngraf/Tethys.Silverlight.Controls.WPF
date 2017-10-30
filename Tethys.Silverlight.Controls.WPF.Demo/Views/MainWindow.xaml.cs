@@ -123,5 +123,16 @@ namespace Tethys.Silverlight.Controls.WPF.Demo.Views
             var dlg = new TestDialog();
             dlg.ShowDialog();
         }
+
+        /// <summary>
+        /// Handles the OnClick event of the <c>BtnTestDialog</c> control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
+        private void BtnTestDialog2_OnClick(object sender, RoutedEventArgs e)
+        {
+            var dlg = new TestDialog2();
+            dlg.ShowDialog();
+        }
     }
 }

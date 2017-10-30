@@ -4,6 +4,11 @@
              StartupUri="Views\MainWindow.xaml">
     
     <Application.Resources>
-        <ResourceDictionary Source="pack://application:,,,/Tethys.Silverlight.Controls.WPF;component/Themes/Generic.xaml" />
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Tethys.Silverlight.Controls.WPF;component/Themes/MasterDictionary.xaml" />
+                <ResourceDictionary Source="Resources/ToolbarSymbols.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

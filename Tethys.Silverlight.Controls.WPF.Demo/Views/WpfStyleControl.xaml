@@ -1,0 +1,918 @@
+﻿<!-- ========================================================================
+// Tethys.Silverlight.Controls.WPF
+// ==========================================================================
+//
+// A custom control library for WPF applications.
+//
+// ==========================================================================
+// <copyright file="WpfStyleControl.xaml" company="Tethys">
+// Copyright  2015 by T. Graf
+//            All rights reserved.
+//            Licensed under the Apache License, Version 2.0.
+//            Unless required by applicable law or agreed to in writing, 
+//            software distributed under the License is distributed on an
+//            "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+//            either express or implied. 
+// </copyright>
+// 
+// System ... Microsoft .Net Framework 4.5. 
+// Tools .... Microsoft Visual Studio 2013
+//
+// ======================================================================= -->
+    
+<UserControl 
+    x:Class="Tethys.Silverlight.Controls.WPF.Demo.Views.WpfStyleControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:Wpf="clr-namespace:Tethys.Silverlight.Controls.WPF;assembly=Tethys.Silverlight.Controls.WPF"
+    xmlns:ViewModel="clr-namespace:Tethys.Silverlight.Controls.WPF.Demo.ViewModel"
+    xmlns:Controls="clr-namespace:Tethys.Silverlight.Controls.WPF.Controls;assembly=Tethys.Silverlight.Controls.WPF"
+    Wpf:ThemeManager.GlobalTheme="Light"
+    Wpf:ThemeManager.GlobalAccentColor="Red"
+    mc:Ignorable="d" 
+    d:DesignHeight="700" 
+    d:DesignWidth="600">
+    
+    <!--
+    wpf:ThemeManager.GlobalTheme="Light"
+    wpf:ThemeManager.GlobalAccentColor="MediumPurple"
+    -->
+
+    <UserControl.Resources>
+        <Style x:Key="TextBlockHeaderStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="Foreground" Value="{DynamicResource Control.Foreground}" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontSize" Value="14" />
+        </Style>
+    </UserControl.Resources>
+
+    <Grid
+        Background="{DynamicResource Control.Background}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Menu
+            Grid.Row="0">
+            <MenuItem 
+                Header="_Edit">
+                <MenuItem
+                    Header="Copy" 
+                    InputGestureText="Ctrl+X"/>
+                <MenuItem
+                    Header="(disabled)"
+                    IsEnabled="False"/>
+                <MenuItem 
+                    Command="ApplicationCommands.Cut"/>
+                <MenuItem 
+                    Command="ApplicationCommands.Paste"/>
+            </MenuItem>
+            
+            <MenuItem
+                Header="_Theme">
+                <MenuItem
+                    Header="Light"
+                    Command="{Binding LightThemeCommand}"/>
+                <MenuItem
+                    Header="Dark"
+                    Command="{Binding DarkThemeCommand}"/>
+                <MenuItem
+                    Header="Accent Color">
+                    <MenuItem
+                        Header="Blue"
+                        Command="{Binding AccentColorCommand}"
+                        CommandParameter="Blue"/>
+                    <MenuItem
+                        Header="Red"
+                        Command="{Binding AccentColorCommand}"
+                        CommandParameter="Red"/>
+                    <MenuItem
+                        Header="Green"
+                        Command="{Binding AccentColorCommand}"
+                        CommandParameter="Green"/>
+                    <MenuItem
+                        Header="Yellow"
+                        Command="{Binding AccentColorCommand}"
+                        CommandParameter="Yellow"/>
+                </MenuItem>
+            </MenuItem>
+            
+            <MenuItem 
+                Header="_Font">
+                <MenuItem 
+                    Header="_Bold" 
+                    IsCheckable="True" />
+                <MenuItem 
+                    Header="_Italic" 
+                    IsCheckable="True"
+                    IsChecked="True" />
+                <Separator/>
+                <MenuItem Header="I_ncrease Font Size" />
+                <MenuItem Header="_Decrease Font Size" />
+            </MenuItem>
+        </Menu>
+
+        <!-- -->
+        <ToolBar
+            Grid.Row="1">
+            <Controls:ToolbarButtonEx
+                    PathData="{DynamicResource ToolbarClipboardCopyGeometry}" />
+            <Controls:ToolbarButtonEx
+                    PathData="{StaticResource ToolbarSaveGeometry}"/>
+            <Controls:ToolbarButtonEx
+                    PathData="{StaticResource ToolbarSaveAsGeometry}" />
+        </ToolBar>
+        <!-- -->
+
+        <ScrollViewer
+            HorizontalScrollBarVisibility="Auto"
+            VerticalScrollBarVisibility="Auto"
+            Grid.Row="2">
+            <Grid 
+                Background="{DynamicResource Control.Background}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Expander
+                    Grid.Row="2"
+                    IsExpanded="False"
+                    Header="BUTTON CONTROLS">
+                    <StackPanel>
+                        <StackPanel>
+                            <TextBlock 
+                                Text="BUTTON" 
+                                Style="{StaticResource TextBlockHeaderStyle}" />
+                            <StackPanel
+                                Orientation="Horizontal">
+                                <Button
+                                    Content="Button"
+                                    Margin="8,8,0,8"
+                                    Width="100" />
+                                <Button
+                                    Content="Button (disabled)"
+                                    Margin="8,8,0,8"
+                                    IsEnabled="false"
+                                    Width="100" />
+                                <Button
+                                    Margin="8,8,0,8"
+                                    IsDefault="True"
+                                    Width="100">
+                                    <TextBlock Text="Button (defaulted)" />
+                                </Button>
+                            </StackPanel>
+
+                            <!--
+                            wpf:ThemeManager.LocalTheme="Light"
+                            -->
+                            <Button
+                                Wpf:ThemeManager.LocalTheme="Light"
+                                Content="Button"
+                                Margin="8,8,0,8"
+                                Width="100" />
+                        </StackPanel>
+
+                        <StackPanel
+                            Orientation="Vertical">
+                            <TextBlock 
+                                Text="CHECKBOX"
+                                Style="{StaticResource TextBlockHeaderStyle}" />
+                            <StackPanel
+                                Orientation="Horizontal">
+                                <CheckBox
+                                    Content="CheckBox" 
+                                    Margin="8,8,0,8" />
+                                <CheckBox
+                                    Margin="8,8,0,8"
+                                    Content="CheckBox (disabled)" 
+                                    IsEnabled="False" />
+                            </StackPanel>
+                            <StackPanel
+                                Orientation="Horizontal">
+                                <CheckBox
+                                    Content="CheckBox" 
+                                    IsChecked="true"
+                                    Margin="8,8,0,8" />
+                                <CheckBox
+                                    Margin="8,8,0,8"
+                                    Content="CheckBox (disabled)" 
+                                    IsChecked="true"
+                                    IsEnabled="False" />
+                            </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel
+                            Orientation="Vertical">
+                            <TextBlock 
+                                Text="RADIOBUTTON" 
+                                Style="{StaticResource TextBlockHeaderStyle}" />
+                            <StackPanel 
+                                Orientation="Horizontal">
+                                <RadioButton
+                                    Content="RadioButton" 
+                                    Margin="8,8,0,8" />
+                                <RadioButton
+                                    Margin="8,8,0,8"
+                                    Content="RadioButton (disabled)" 
+                                    IsEnabled="False" />
+                            </StackPanel>
+                            <StackPanel 
+                                Orientation="Horizontal">
+                                <RadioButton
+                                    Content="RadioButton" 
+                                    IsChecked="True"
+                                    Margin="8,8,0,8" />
+                                <RadioButton
+                                    Margin="8,8,0,8"
+                                    IsChecked="True"
+                                    Content="RadioButton (disabled)" 
+                                    IsEnabled="False" />
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel>
+                            <TextBlock 
+                                Text="TOGGLEBUTTON"
+                                Style="{StaticResource TextBlockHeaderStyle}" />
+                            <ToggleButton 
+                                Content="ToggleButton"
+                                HorizontalAlignment="Left"
+                                Margin="8,8,0,0"
+                                Width="150"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Expander>
+
+                <Expander
+                    Grid.Row="3"
+                    IsExpanded="False"
+                    Header="ITEM CONTROLS">
+                    <StackPanel>
+                        <CheckBox
+                            x:Name="EnableItemControls"
+                            IsChecked="True"
+                            Content="ItemControls enabled" />
+                        
+                        <StackPanel
+                            Orientation="Vertical">
+                            <TextBlock 
+                                Text="COMBOBOX" 
+                                Style="{StaticResource TextBlockHeaderStyle}" />
+                            <StackPanel Orientation="Horizontal">
+                                <ComboBox
+                                    HorizontalAlignment="Left"
+                                    IsEnabled="{Binding ElementName=EnableItemControls, Path=IsChecked}"
+                                    Width="150" Height="20">
+                                    <ComboBoxItem Content="ComboBox Item 1"/>
+                                    <ComboBoxItem Content="ComboBox Item 2"/>
+                                    <ComboBoxItem Content="ComboBox Item 3"/>
+                                </ComboBox>
+
+                                <ComboBox
+                                    x:Name="ComboBox"
+                                    Margin="8,0,0,0"
+                                    IsEditable="True"
+                                    IsEnabled="{Binding ElementName=EnableItemControls, Path=IsChecked}"
+                                    HorizontalAlignment="Left"
+                                    Width="150" Height="20">
+                                    <ComboBoxItem Content="ComboBox Item 1"/>
+                                    <ComboBoxItem Content="ComboBox Item 2"/>
+                                    <ComboBoxItem Content="ComboBox Item 3"/>
+                                </ComboBox>
+                             </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel>
+                            <TextBlock 
+                                Text="LISTBOX" 
+                                Style="{StaticResource TextBlockHeaderStyle}" />
+                            <ListBox
+                                IsEnabled="{Binding ElementName=EnableItemControls, Path=IsChecked}">
+                                <ListBoxItem Content="Listbox Item 1"/>
+                                <ListBoxItem Content="Listbox Item 2"/>
+                                <ListBoxItem Content="Listbox Item 3"/>
+                            </ListBox>
+                        </StackPanel>
+                        
+                        <StackPanel>
+                            <TextBlock 
+                                Style="{StaticResource TextBlockHeaderStyle}"
+                                Text="LISTVIEW"/>
+                            <ListView
+                                IsEnabled="{Binding ElementName=EnableItemControls, Path=IsChecked}">
+                                <ListViewItem  
+                                    Content="ListViewItem 1"/>
+                                <ListViewItem
+                                    Content="ListViewItem 2"/>
+                                <ListViewItem 
+                                    Content="ListViewItem 3"/>
+                            </ListView>
+                        </StackPanel>
+                        
+                        <StackPanel>
+                            <TextBlock 
+                                Text="TREEVIEW"
+                                Style="{StaticResource TextBlockHeaderStyle}" />
+                            <TreeView
+                                IsEnabled="{Binding ElementName=EnableItemControls, Path=IsChecked}">
+                                <TreeViewItem 
+                                    Header="111" />
+                                <TreeViewItem 
+                                    Header="222">
+                                    <TreeViewItem 
+                                        Header="222-1">
+                                        <TreeViewItem 
+                                            Header="222-1-1"/>
+                                    </TreeViewItem>
+                                </TreeViewItem>
+                                <TreeViewItem 
+                                    Header="XXXX" />
+                            </TreeView>
+                        </StackPanel>
+                    </StackPanel>
+                </Expander>
+
+                <Expander
+                    Grid.Row="4"
+                    IsExpanded="False"
+                    Header="PROGRESS BAR &amp; SLIDER">
+                    <StackPanel>
+                        <CheckBox
+                            x:Name="EnableSliderControls"
+                            IsChecked="True"
+                            Content="Controls enabled" />
+                        
+                        <StackPanel>
+                            <TextBlock 
+                                Text="PROGRESSBAR" 
+                                Style="{StaticResource TextBlockHeaderStyle}" />
+                            <StackPanel 
+                                Orientation="Horizontal">
+                                <ProgressBar 
+                                    Height="10" Width="100" 
+                                    Margin="8,8,8,8"
+                                    IsEnabled="{Binding ElementName=EnableSliderControls, Path=IsChecked}"
+                                    Value="65"/>
+                                <ProgressBar 
+                                    Height="10" Width="100" 
+                                    Margin="8,8,8,8"
+                                    IsEnabled="{Binding ElementName=EnableSliderControls, Path=IsChecked}"
+                                    VerticalAlignment="Top" 
+                                    IsIndeterminate="True"/>
+                            </StackPanel>
+                        </StackPanel>
+                        
+                        <StackPanel>
+                            <TextBlock
+                                Text="SLIDER"
+                                Style="{StaticResource TextBlockHeaderStyle}" />
+                            <Slider
+                                Margin="0,0,8,0"
+                                IsEnabled="{Binding ElementName=EnableSliderControls, Path=IsChecked}"
+                                Minimum="0" Maximum="100" Value="65"
+                                AutoToolTipPlacement="BottomRight"
+                                Interval="10"
+                                IsSnapToTickEnabled="True"
+                                TickFrequency="10"
+                                TickPlacement="BottomRight" 
+                                IsSelectionRangeEnabled="True"
+                                SelectionStart="30"
+                                SelectionEnd="70"
+                                Height="40"/>
+
+                            <Slider
+                                Margin="20,0,8,0"
+                                IsEnabled="{Binding ElementName=EnableSliderControls, Path=IsChecked}"
+                                Orientation="Vertical"
+                                Minimum="0" Maximum="100" Value="65"
+                                AutoToolTipPlacement="BottomRight"
+                                Interval="10"
+                                IsSnapToTickEnabled="True"
+                                TickFrequency="10"
+                                TickPlacement="BottomRight" 
+                                IsSelectionRangeEnabled="True"
+                                SelectionStart="30"
+                                SelectionEnd="70"
+                                Height="120"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Expander>
+
+                <Expander
+                    Grid.Row="5"
+                    IsExpanded="True"
+                    Header="DATAGRID">
+                    <StackPanel>
+                        <CheckBox
+                            x:Name="EnableDataGridControl"
+                            IsChecked="True"
+                            Content="Control enabled" />
+                        <TextBlock 
+                            Text="DATAGRID" 
+                            Style="{StaticResource TextBlockHeaderStyle}" />
+                        <DataGrid
+                            Margin="8,8"
+                            IsEnabled="{Binding ElementName=EnableDataGridControl, Path=IsChecked}"
+                            GridLinesVisibility="All"
+                            HeadersVisibility="All"
+                            AutoGenerateColumns="False"
+                            CanUserResizeColumns="True"
+                            IsReadOnly="False"
+                            CanUserSortColumns="True"
+                            SelectionMode="Single">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn
+                                    Header="Column 1" 
+                                    Width="100"
+                                    Binding="{Binding Column1}" />
+                               
+                                <DataGridTemplateColumn 
+                                    Header="Column 2"
+                                    Width="100"
+                                    SortDirection="Descending">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Column2}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridCheckBoxColumn Header="Column 3" Width="50"/>
+                                <DataGridTemplateColumn Header="Column 4" Width="*">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Column4}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                            <ViewModel:DataGridData 
+                                Column1="AAAAA" Column2="111111" Column3="aaaaaaa" Column4="!!!!!!!!" />
+                            <ViewModel:DataGridData 
+                                Column1="BBBBB" Column2="222222" Column3="bbbbbbb" Column4="%%%%%%%%" />
+                            <ViewModel:DataGridData 
+                                Column1="CCCCC" Column2="333333" Column3="ccccccc" Column4="§§§§§§§§" />
+                            <ViewModel:DataGridData 
+                                Column1="DDDDD" Column2="444444" Column3="ddddddd" Column4="$$$$$$$$" />
+                        </DataGrid>
+                    </StackPanel>
+                </Expander>
+                
+                <Expander
+                    Grid.Row="6"
+                    IsExpanded="False"
+                    Header="Misc">
+                    <StackPanel>
+                        <StackPanel>
+                            <TextBlock 
+                                Text="ResizeGrip" 
+                                Style="{StaticResource TextBlockHeaderStyle}" />
+                            <StackPanel
+                                Margin="8"
+                                Orientation="Horizontal">
+                                <Border>
+                                    <Grid>
+                                        <TextBlock
+                                            Padding="4,4,8,8"
+                                            Text="Default" />
+                                        <ResizeGrip />
+                                    </Grid>
+                                </Border>
+                                <Border>
+                                    <Grid>
+                                        <TextBlock
+                                            Padding="4,4,8,8"
+                                            Text="SmallGripStyle" />
+                                        <ResizeGrip
+                                            Style="{StaticResource SmallGripStyle}"/>
+                                    </Grid>
+                                </Border>
+                                <Border>
+                                    <Grid>
+                                        <TextBlock
+                                            Padding="4"
+                                            Text="LineGripStyle" />
+                                        <ResizeGrip
+                                            Style="{StaticResource LineGripStyle}"/>
+                                    </Grid>
+                                </Border>
+                                
+                                <Button
+                                    Margin="16,0,0,0"
+                                    Content="Context Menu">
+                                    <Button.Style>
+                                        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+                                            <Style.Triggers>
+                                                <EventTrigger RoutedEvent="Click">
+                                                    <EventTrigger.Actions>
+                                                        <BeginStoryboard>
+                                                            <Storyboard>
+                                                                <BooleanAnimationUsingKeyFrames
+                                                                    Storyboard.TargetProperty="ContextMenu.IsOpen">
+                                                                    <DiscreteBooleanKeyFrame KeyTime="00:00:00" Value="True" />
+                                                                </BooleanAnimationUsingKeyFrames>
+                                                            </Storyboard>
+                                                        </BeginStoryboard>
+                                                    </EventTrigger.Actions>
+                                                </EventTrigger>
+                                            </Style.Triggers>
+                                            <Setter Property="ContextMenu">
+                                                <Setter.Value>
+                                                    <ContextMenu>
+                                                        <MenuItem Header="Item 1-1">
+                                                            <MenuItem Header="Level 2-1"></MenuItem>
+                                                            <MenuItem Header="Level 2-2"></MenuItem>
+                                                        </MenuItem>
+                                                        <MenuItem Header="Level 1-2" />
+                                                        <MenuItem Header="Level 1-3" />
+                                                        <MenuItem Header="Level 1-4" />
+                                                    </ContextMenu>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </Expander>
+                
+                <Expander
+                    Grid.Row="7"
+                    IsExpanded="False"
+                    Header="TEXT CONTROLS">
+                    <StackPanel>
+                        <CheckBox
+                            x:Name="EnableTextControls"
+                            IsChecked="True"
+                            Content="Controls enabled" />
+                        <TextBox 
+                            IsEnabled="{Binding ElementName=EnableTextControls, Path=IsChecked}"
+                            TextWrapping="Wrap" 
+                            IsInactiveSelectionHighlightEnabled="True"
+                            Text="TextBox">
+                        </TextBox>
+
+                       <PasswordBox 
+                            IsEnabled="{Binding ElementName=EnableTextControls, Path=IsChecked}"
+                            Margin="0,8,0,0"/>
+                        <RichTextBox 
+                            IsEnabled="{Binding ElementName=EnableTextControls, Path=IsChecked}"
+                            Height="30" Width="300"
+                            HorizontalAlignment="Left"
+                            Margin="0,8,0,0">
+                            <!-- -->
+                        	<FlowDocument>
+                        		<Paragraph><Run Text="RichTextBox"/></Paragraph>
+                        	</FlowDocument>
+                            <!-- -->
+                        </RichTextBox>
+                    </StackPanel>
+                </Expander>
+
+                <Expander
+                    Grid.Row="8"
+                    IsExpanded="False"
+                    Header="LABEL &amp; TEXTBLOCK">
+                    <StackPanel>
+                        <Label
+                            Content="Label" />
+                        <TextBlock 
+                            Text="TEXT" 
+                            FontWeight="Bold" 
+                            FontSize="14" />
+                    </StackPanel>
+                </Expander>
+
+                <Expander
+                    Grid.Row="9"
+                    IsExpanded="True"
+                    Header="CALENDAR &amp; DATEPICKER">
+                    <StackPanel
+                        Orientation="Vertical">
+                        <CheckBox
+                            x:Name="EnableDateControls"
+                            IsChecked="True"
+                            Content="Controls enabled" />
+                        
+                        <StackPanel Orientation="Horizontal">
+                            <Calendar
+                                IsEnabled="{Binding ElementName=EnableDateControls, Path=IsChecked}"
+                                HorizontalAlignment="Left"
+                                Margin="20,0,0,0" />
+                            <!--
+                              
+                                CalendarButtonStyle="{DynamicResource CalendarButtonStyle}" 
+                                CalendarDayButtonStyle="{DynamicResource CalendarDayButtonStyle}"
+                                Style="{DynamicResource CalendarStyle}" 
+                                -->
+                            <DatePicker 
+                                IsEnabled="{Binding ElementName=EnableDateControls, Path=IsChecked}"
+                                SelectedDateFormat="Long"
+                                HorizontalAlignment="Left"
+                                Margin="20,0,0,0" 
+                                Width="150" 
+                                Height="24" />
+                        </StackPanel>
+                    </StackPanel>
+                    
+                </Expander>
+
+                <Expander
+                    Grid.Row="10"
+                    IsExpanded="False"
+                    Header="GROUPBOX &amp; TABCONTROL">
+                    <StackPanel>
+                        <CheckBox
+                            x:Name="EnableGroupControls"
+                            IsChecked="True"
+                            Content="Controls enabled" />
+                        
+                        <StackPanel
+                            Orientation="Horizontal">
+                            <GroupBox 
+                                IsEnabled="{Binding ElementName=EnableGroupControls, Path=IsChecked}"
+                                Margin="10,10">
+                                <GroupBox.Header>
+                                    <TextBlock 
+                                        Text=" Colored Header " 
+                                        Foreground="{DynamicResource Control.AccentColor}" />
+                                </GroupBox.Header>
+                                <TextBlock 
+                                    Text="Dummy GroupBox content" 
+                                    Height="30"/>
+                            </GroupBox>
+
+                            <GroupBox 
+                                IsEnabled="{Binding ElementName=EnableGroupControls, Path=IsChecked}"
+                                Margin="10,10"
+                                Header=" GroupBox ">
+                                <TextBlock 
+                                    Text="Dummy GroupBox content" 
+                                    Height="30"/>
+                            </GroupBox>
+                        </StackPanel>
+
+                        <TabControl
+                            IsEnabled="{Binding ElementName=EnableGroupControls, Path=IsChecked}"
+                            Margin="10,10"
+                            HorizontalAlignment="Left"
+                            Height="100" Width="300"
+                            Style="{DynamicResource TabControlStyle}" 
+                            ItemContainerStyle="{DynamicResource TabItemStyle}" 
+                            ItemsPanel="{DynamicResource TabControlItemsPanelTemplate}">
+                            <TabItem Header="TabItem 1">
+                                <Grid 
+                                    Background="{DynamicResource Control.Background}">
+                                    <TextBlock Text="Some Dummy content..." />
+                                </Grid>
+                            </TabItem>
+                            <TabItem Header="TabItem 2">
+                                <Grid Background="{DynamicResource Control.Background}">
+                                    <TextBlock Text="Some Dummy content..." />
+                                </Grid>
+                            </TabItem>
+                        </TabControl>
+                    </StackPanel>
+                </Expander>
+
+                <Expander
+                    Grid.Row="11"
+                    IsExpanded="False"
+                    Header="CONTROL COLORS">
+                    <Grid
+                        Margin="8">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="160" />
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="160" />
+                            <ColumnDefinition Width="100" />
+                        </Grid.ColumnDefinitions>
+                        
+                        <TextBlock 
+                            Grid.Row="0" Grid.Column="0"
+                            Margin="2"
+                            Text="Control.AccentColor"/>
+                        <Border
+                            Grid.Row="0" Grid.Column="1"
+                            Margin="2"
+                            BorderBrush="DarkGray" 
+                            BorderThickness="1"
+                            Background="{DynamicResource Control.AccentColor}" />
+
+                        <TextBlock 
+                            Grid.Row="0" Grid.Column="2"
+                            Margin="2"
+                            Text="Control.ToolbarItemForeground"/>
+                        <Border
+                            Grid.Row="0" Grid.Column="3"
+                            Margin="2"
+                            BorderBrush="DarkGray" 
+                            BorderThickness="1"
+                            Background="{DynamicResource Control.ToolbarItemForeground}" />
+
+                        <TextBlock 
+                            Grid.Row="1" Grid.Column="0"
+                            Margin="2"
+                            Text="Control.Foreground"/>
+                        <Border
+                            Grid.Row="1" Grid.Column="1"
+                            Margin="2"
+                            BorderBrush="DarkGray" 
+                            BorderThickness="1"
+                            Background="{DynamicResource Control.Foreground}" />
+
+                        <TextBlock 
+                            Grid.Row="1" Grid.Column="2"
+                            Margin="2"
+                            Text="Control.SliderThumbBackground"/>
+                        <Border
+                            Grid.Row="1" Grid.Column="3"
+                            Margin="2"
+                            BorderBrush="DarkGray" 
+                            BorderThickness="1"
+                            Background="{DynamicResource Control.SliderThumbBackground}" />
+
+                        <TextBlock 
+                            Grid.Row="2" Grid.Column="0"
+                            Margin="2"
+                            Text="Control.Background"/>
+                        <Border
+                            Grid.Row="2" Grid.Column="1"
+                            Margin="2"
+                            BorderBrush="DarkGray" 
+                            BorderThickness="1"
+                            Background="{DynamicResource Control.Background}" />
+
+                        <TextBlock 
+                            Grid.Row="2" Grid.Column="2"
+                            Margin="2"
+                            Text="Control.AccentColor"/>
+                        <Border
+                            Grid.Row="2" Grid.Column="3"
+                            Margin="2"
+                            BorderBrush="DarkGray" 
+                            BorderThickness="1"
+                            Background="{DynamicResource Control.AccentColor}" />
+
+                        <TextBlock 
+                            Grid.Row="3" Grid.Column="0"
+                            Margin="2"
+                            Text="Control.Border.Default"/>
+                        <Border
+                            Grid.Row="3" Grid.Column="1"
+                            Margin="2"
+                            BorderBrush="DarkGray" 
+                            BorderThickness="1"
+                            Background="{DynamicResource Control.Border.Default}" />
+
+                        <TextBlock 
+                            Grid.Row="3" Grid.Column="2"
+                            Margin="2"
+                            Text="Control.AccentColor"/>
+                        <Border
+                            Grid.Row="3" Grid.Column="3"
+                            Margin="2"
+                            BorderBrush="DarkGray" 
+                            BorderThickness="1"
+                            Background="{DynamicResource Control.AccentColor}" />
+
+                        <TextBlock 
+                            Grid.Row="4" Grid.Column="0"
+                            Margin="2"
+                            Text="Control.MouseOver"/>
+                        <Border
+                            Grid.Row="4" Grid.Column="1"
+                            Margin="2"
+                            BorderBrush="DarkGray" 
+                            BorderThickness="1"
+                            Background="{DynamicResource Control.MouseOver}" />
+
+                        <TextBlock 
+                            Grid.Row="4" Grid.Column="2"
+                            Margin="2"
+                            Text="Control.AccentColor"/>
+                        <Border
+                            Grid.Row="4" Grid.Column="3"
+                            Margin="2"
+                            BorderBrush="DarkGray" 
+                            BorderThickness="1"
+                            Background="{DynamicResource Control.AccentColor}" />
+
+                        <TextBlock 
+                            Grid.Row="5" Grid.Column="0"
+                            Margin="2"
+                            Text="Control.Pressed"/>
+                        <Border
+                            Grid.Row="5" Grid.Column="1"
+                            Margin="2"
+                            BorderBrush="DarkGray" 
+                            BorderThickness="1"
+                            Background="{DynamicResource Control.Pressed}" />
+
+                        <TextBlock 
+                            Grid.Row="5" Grid.Column="2"
+                            Margin="2"
+                            Text="Control.AccentColor"/>
+                        <Border
+                            Grid.Row="5" Grid.Column="3"
+                            Margin="2"
+                            BorderBrush="DarkGray" 
+                            BorderThickness="1"
+                            Background="{DynamicResource Control.AccentColor}" />
+
+                        <TextBlock 
+                            Grid.Row="6" Grid.Column="0"
+                            Margin="2"
+                            Text="Control.Border.Highlighted"/>
+                        <Border
+                            Grid.Row="6" Grid.Column="1"
+                            Margin="2"
+                            BorderBrush="DarkGray" 
+                            BorderThickness="1"
+                            Background="{DynamicResource Control.Border.Highlighted}" />
+
+                        <TextBlock 
+                            Grid.Row="6" Grid.Column="2"
+                            Margin="2"
+                            Text="Control.AccentColor"/>
+                        <Border
+                            Grid.Row="6" Grid.Column="3"
+                            Margin="2"
+                            BorderBrush="DarkGray" 
+                            BorderThickness="1"
+                            Background="{DynamicResource Control.AccentColor}" />
+
+                        <TextBlock 
+                            Grid.Row="7" Grid.Column="0"
+                            Margin="2"
+                            Text="Control.HighlightedTextBrush"/>
+                        <Border
+                            Grid.Row="7" Grid.Column="1"
+                            Margin="2"
+                            BorderBrush="DarkGray" 
+                            BorderThickness="1"
+                            Background="{DynamicResource Control.HighlightedTextBrush}" />
+
+                        <TextBlock 
+                            Grid.Row="7" Grid.Column="2"
+                            Margin="2"
+                            Text="Control.AccentColor"/>
+                        <Border
+                            Grid.Row="7" Grid.Column="3"
+                            Margin="2"
+                            BorderBrush="DarkGray" 
+                            BorderThickness="1"
+                            Background="{DynamicResource Control.AccentColor}" />
+                    </Grid>
+                </Expander>
+            </Grid>
+        </ScrollViewer>
+
+        <StatusBar
+            Grid.Row="3"
+            VerticalAlignment="Bottom" Style="{DynamicResource StatusBarStyle}">
+            <StatusBarItem HorizontalAlignment="Stretch">
+                <TextBlock Text="Ready" />
+            </StatusBarItem>
+            <Separator/>
+            <StatusBarItem
+                    HorizontalAlignment="Right">
+                <TextBlock><Run Text="Online"/></TextBlock>
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+
+
+</UserControl>

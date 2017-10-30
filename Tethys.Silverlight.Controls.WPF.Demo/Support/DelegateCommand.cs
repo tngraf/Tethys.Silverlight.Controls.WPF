@@ -1,6 +1,6 @@
 ﻿#region Header
 // ---------------------------------------------------------------------------
-// Tethys.Silverlight
+// Tethys.Silverlight.Controls.WPF
 // ===========================================================================
 //
 // This library contains common code of WPF, Silverlight, Windows Phone and

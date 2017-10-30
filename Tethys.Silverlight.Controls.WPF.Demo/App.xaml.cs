@@ -24,10 +24,24 @@
 
 namespace Tethys.Silverlight.Controls.WPF.Demo
 {
+    using System.Windows;
+
     /// <summary>
     /// Interaction logic for App.
     /// </summary>
     public partial class App
     {
-    }
-}
+        /// <summary>
+        /// Called at startup of the application.
+        /// </summary>
+        /// <param name="e">A <see cref="T:System.Windows.StartupEventArgs" /> 
+        /// that contains the event data.</param>
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+
+            //ThemeManager.Current.SetLightTheme();
+            ThemeManager.Current.SetDarkTheme();
+        } // OnStartup()
+    } // App
+} // Tethys.Silverlight.Controls.WPF.Demo
