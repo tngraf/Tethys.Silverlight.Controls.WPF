@@ -86,7 +86,10 @@ namespace Tethys.Silverlight.Controls.WPF.Demo.ViewModel
         protected virtual void RaisePropertyChanged(
             [CallerMemberName] string propertyName = null)
         {
-            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            if (this.PropertyChanged != null)
+            {
+                this.PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            } // if
         } // RaisePropertyChanged()
 
         /// <summary>
