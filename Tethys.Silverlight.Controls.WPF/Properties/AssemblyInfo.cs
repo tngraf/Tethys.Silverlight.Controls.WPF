@@ -16,7 +16,7 @@
 //            either express or implied. 
 // </copyright>
 // 
-// System ... Microsoft .Net Framework 4.5. 
+// System ... Microsoft .Net Framework 4.6.2 
 // Tools .... Microsoft Visual Studio 2013
 //
 // ---------------------------------------------------------------------------
@@ -46,5 +46,5 @@ using System.Windows;
 [assembly: ThemeInfo(ResourceDictionaryLocation.None, ResourceDictionaryLocation.SourceAssembly)]
 
 // Version information
-[assembly: AssemblyVersion("2.0.1.0")]
-[assembly: AssemblyFileVersion("2.0.1.0")]
+[assembly: AssemblyVersion("2.1.0.0")]
+[assembly: AssemblyFileVersion("2.1.0.0")]

@@ -20,10 +20,10 @@
 //
 // ======================================================================= -->
     
-<Wpf1:ThemeResourceDictionary 
+<wpf1:ThemeResourceDictionary 
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:Wpf1="clr-namespace:Tethys.Silverlight.Controls.WPF">
+    xmlns:wpf1="clr-namespace:Tethys.Silverlight.Controls.WPF">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/Tethys.Silverlight.Controls.WPF;component/Themes/CommonColors.xaml" />
@@ -52,6 +52,9 @@
     <SolidColorBrush x:Key="Control.Pressed.Glyph" Color="{DynamicResource ControlHighlightedTextColor}" />
     <SolidColorBrush x:Key="Control.Pressed.Gray" Color="#FFA7A7A7" />
     <SolidColorBrush x:Key="Control.HighlightedTextBrush" Color="{DynamicResource ControlHighlightedTextColor}" />
+    
+    <!-- PasswordBoxEx -->
+    <Color x:Key="PasswordBoxEx.MouseOverColor">#FF00FF00</Color>
     
     <!-- Button -->
     <SolidColorBrush x:Key="Button.Static.Background" Color="{DynamicResource MainBackgroundColor}"/>
@@ -191,7 +194,6 @@
     <!-- GroupBox -->
     <SolidColorBrush x:Key="GroupBox.InnerBorderBrush" Color="#FFFFFFFF"/>
 
-
     <!-- DataGrid -->
     <SolidColorBrush x:Key="{x:Static DataGrid.FocusBorderBrushKey}" Color="#FF000000"/>
-</Wpf1:ThemeResourceDictionary>
+</wpf1:ThemeResourceDictionary>
