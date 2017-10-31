@@ -44,27 +44,27 @@ namespace Tethys.Silverlight.Controls.WPF.Demo.ViewModel
         /// <summary>
         /// Gets the loaded command.
         /// </summary>
-        public ICommand LoadedCommand { get; }
+        public ICommand LoadedCommand { get; private set; }
 
         /// <summary>
         /// Gets the activated command.
         /// </summary>
-        public ICommand ActivatedCommand { get; }
+        public ICommand ActivatedCommand { get; private set; }
 
         /// <summary>
         /// Gets the closing command.
         /// </summary>
-        public ICommand ClosingCommand { get; }
+        public ICommand ClosingCommand { get; private set; }
 
         /// <summary>
         /// Gets the resized command.
         /// </summary>
-        public ICommand ResizedCommand { get; }
+        public ICommand ResizedCommand { get; private set; }
 
         /// <summary>
         /// Gets the window state change command.
         /// </summary>
-        public ICommand WindowStateChangeCommand { get; }
+        public ICommand WindowStateChangeCommand { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TestDialogViewModel"/> class.

@@ -42,7 +42,7 @@ namespace Tethys.Silverlight.Controls.WPF.Demo.ViewModel
         /// <summary>
         /// Gets the login command.
         /// </summary>
-        public ICommand LoginCommand { get; }
+        public ICommand LoginCommand { get; private set; }
         #endregion // PUBLIC PROPERTIES
 
         //// ---------------------------------------------------------------------
