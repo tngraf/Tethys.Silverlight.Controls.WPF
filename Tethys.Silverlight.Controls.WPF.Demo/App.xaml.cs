@@ -40,7 +40,7 @@ namespace Tethys.Silverlight.Controls.WPF.Demo
         {
             base.OnStartup(e);
 
-            //ThemeManager.Current.SetLightTheme();
+            ////ThemeManager.Current.SetLightTheme();
             ThemeManager.Current.SetDarkTheme();
         } // OnStartup()
     } // App

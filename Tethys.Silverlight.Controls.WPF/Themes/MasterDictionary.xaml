@@ -59,5 +59,6 @@
         <ResourceDictionary Source="Controls\ListView.xaml"/>
         <ResourceDictionary Source="Controls\Slider.xaml"/>
         <ResourceDictionary Source="Controls\ResizeGrip.xaml"/>
+        <ResourceDictionary Source="Controls\PasswordBoxEx.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

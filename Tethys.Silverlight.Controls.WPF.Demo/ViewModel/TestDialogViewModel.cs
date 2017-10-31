@@ -29,7 +29,7 @@ namespace Tethys.Silverlight.Controls.WPF.Demo.ViewModel
     using System.Runtime.CompilerServices;
     using System.Windows.Input;
 
-    using Tethys.Silverlight.Controls.WPF.Demo.Support;
+    using Support;
 
     /// <summary>
     /// View model for the test dialog.
@@ -44,27 +44,27 @@ namespace Tethys.Silverlight.Controls.WPF.Demo.ViewModel
         /// <summary>
         /// Gets the loaded command.
         /// </summary>
-        public ICommand LoadedCommand { get; private set; }
+        public ICommand LoadedCommand { get; }
 
         /// <summary>
         /// Gets the activated command.
         /// </summary>
-        public ICommand ActivatedCommand { get; private set; }
+        public ICommand ActivatedCommand { get; }
 
         /// <summary>
         /// Gets the closing command.
         /// </summary>
-        public ICommand ClosingCommand { get; private set; }
+        public ICommand ClosingCommand { get; }
 
         /// <summary>
         /// Gets the resized command.
         /// </summary>
-        public ICommand ResizedCommand { get; private set; }
+        public ICommand ResizedCommand { get; }
 
         /// <summary>
         /// Gets the window state change command.
         /// </summary>
-        public ICommand WindowStateChangeCommand { get; private set; }
+        public ICommand WindowStateChangeCommand { get; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TestDialogViewModel"/> class.
@@ -86,11 +86,7 @@ namespace Tethys.Silverlight.Controls.WPF.Demo.ViewModel
         protected virtual void RaisePropertyChanged(
             [CallerMemberName] string propertyName = null)
         {
-            var handler = this.PropertyChanged;
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(propertyName));
-            } // if
+            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         } // RaisePropertyChanged()
 
         /// <summary>

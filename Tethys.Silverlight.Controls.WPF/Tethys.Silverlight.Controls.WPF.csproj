@@ -9,10 +9,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Tethys.Silverlight.Controls.WPF</RootNamespace>
     <AssemblyName>Tethys.Silverlight.Controls.WPF</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -47,6 +48,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\PasswordBoxEx.cs" />
     <Compile Include="Controls\ToolbarButtonEx.cs" />
     <Compile Include="Converter\ColorToSolidColorBrushConverter.cs" />
     <Compile Include="Converter\ImageOffsetConverter.cs" />
@@ -61,7 +63,7 @@
     <Compile Include="Converter\GlassEffectWidthConverter.cs" />
     <Compile Include="Converter\BackgroundColorConverter.cs" />
     <Compile Include="Converter\DialTextPositionConverter.cs" />
-    <Compile Include="StringToVisibilityConverter.cs" />
+    <Compile Include="Converter\StringToVisibilityConverter.cs" />
     <Compile Include="ThemeManager.cs" />
     <Compile Include="ThemeResourceDictionary.cs" />
     <Page Include="Themes\CommonColors.xaml">
@@ -121,6 +123,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Themes\Controls\PasswordBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Controls\PasswordBoxEx.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

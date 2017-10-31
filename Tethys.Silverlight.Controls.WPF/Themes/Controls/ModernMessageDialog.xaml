@@ -22,13 +22,14 @@
 
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:Tethys.Silverlight.Controls.WPF">
+                    xmlns:local="clr-namespace:Tethys.Silverlight.Controls.WPF"
+                    xmlns:converter="clr-namespace:Tethys.Silverlight.Controls.WPF.Converter">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/Tethys.Silverlight.Controls.WPF;component/Themes/Controls/CommonWindowStyles.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <local:StringToVisibilityConverter x:Key="StringToVisibilityConverter" />
+    <converter:StringToVisibilityConverter x:Key="StringToVisibilityConverter" />
     
     <Style TargetType="{x:Type Border}"
         x:Key="ButtonGridBorderStyle"> 

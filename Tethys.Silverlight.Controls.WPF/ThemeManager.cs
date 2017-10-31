@@ -78,6 +78,7 @@ namespace Tethys.Silverlight.Controls.WPF
         public static readonly Uri DarkThemeSource = new Uri(
             "/Tethys.Silverlight.Controls.WPF;component/Themes/Theme.Dark.xaml",
             UriKind.Relative);
+        
         /// <summary>
         /// The location of the light theme resource dictionary.
         /// </summary>
@@ -159,7 +160,7 @@ namespace Tethys.Silverlight.Controls.WPF
 
         #region CONSTRUCTION
         /// <summary>
-        /// Initializes a new instance of the <see cref="ThemeManager"/> class.
+        /// Prevents a default instance of the <see cref="ThemeManager"/> class from being created.
         /// </summary>
         private ThemeManager()
         {
@@ -208,7 +209,7 @@ namespace Tethys.Silverlight.Controls.WPF
         /// Gets the global theme.
         /// </summary>
         /// <param name="obj">The dependency object.</param>
-        /// <returns></returns>
+        /// <returns>The <see cref="ModernUiTheme"/>.</returns>
         [AttachedPropertyBrowsableForType(typeof(UIElement))]
         public static ModernUiTheme GetGlobalTheme(DependencyObject obj)
         {
@@ -239,7 +240,7 @@ namespace Tethys.Silverlight.Controls.WPF
         /// Gets the global accent color.
         /// </summary>
         /// <param name="obj">The dependency object.</param>
-        /// <returns></returns>
+        /// <returns>A <see cref="Color"/> value.</returns>
         [AttachedPropertyBrowsableForType(typeof(UIElement))]
         public static Color GetGlobalAccentColor(DependencyObject obj)
         {
@@ -270,7 +271,7 @@ namespace Tethys.Silverlight.Controls.WPF
         /// Gets the local theme.
         /// </summary>
         /// <param name="obj">The dependency object.</param>
-        /// <returns></returns>
+        /// <returns>The <see cref="ModernUiTheme"/>.</returns>
         [AttachedPropertyBrowsableForType(typeof(UIElement))]
         public static ModernUiTheme GetLocalTheme(DependencyObject obj)
         {
@@ -439,7 +440,7 @@ namespace Tethys.Silverlight.Controls.WPF
                     element.Resources.MergedDictionaries.Insert(0, themeDictionary);
 
                     // find if the target element already has a theme applied  
-                    var existingDictionaries =  (from dictionary in element.Resources
+                    var existingDictionaries = (from dictionary in element.Resources
                         .MergedDictionaries.OfType<ThemeResourceDictionary>()  
                         select dictionary).ToList();  
   
@@ -459,7 +460,7 @@ namespace Tethys.Silverlight.Controls.WPF
             // ReSharper disable once EmptyGeneralCatchClause
             catch
             {
-            }
+            } // catch
         } // ApplyLocalTheme()
 
         /// <summary>

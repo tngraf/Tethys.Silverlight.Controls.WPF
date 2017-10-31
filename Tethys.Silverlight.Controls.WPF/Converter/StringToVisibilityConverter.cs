@@ -22,7 +22,7 @@
 // ---------------------------------------------------------------------------
 #endregion
 
-namespace Tethys.Silverlight.Controls.WPF
+namespace Tethys.Silverlight.Controls.WPF.Converter
 {
     using System;
     using System.Windows;

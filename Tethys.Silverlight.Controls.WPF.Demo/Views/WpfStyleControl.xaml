@@ -26,11 +26,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:Wpf="clr-namespace:Tethys.Silverlight.Controls.WPF;assembly=Tethys.Silverlight.Controls.WPF"
-    xmlns:ViewModel="clr-namespace:Tethys.Silverlight.Controls.WPF.Demo.ViewModel"
-    xmlns:Controls="clr-namespace:Tethys.Silverlight.Controls.WPF.Controls;assembly=Tethys.Silverlight.Controls.WPF"
-    Wpf:ThemeManager.GlobalTheme="Light"
-    Wpf:ThemeManager.GlobalAccentColor="Red"
+    xmlns:wpf="clr-namespace:Tethys.Silverlight.Controls.WPF;assembly=Tethys.Silverlight.Controls.WPF"
+    xmlns:viewModel="clr-namespace:Tethys.Silverlight.Controls.WPF.Demo.ViewModel"
+    xmlns:controls="clr-namespace:Tethys.Silverlight.Controls.WPF;assembly=Tethys.Silverlight.Controls.WPF"
+    wpf:ThemeManager.GlobalTheme="Light"
+    wpf:ThemeManager.GlobalAccentColor="Red"
     mc:Ignorable="d" 
     d:DesignHeight="700" 
     d:DesignWidth="600">
@@ -120,11 +120,11 @@
         <!-- -->
         <ToolBar
             Grid.Row="1">
-            <Controls:ToolbarButtonEx
+            <controls:ToolbarButtonEx
                     PathData="{DynamicResource ToolbarClipboardCopyGeometry}" />
-            <Controls:ToolbarButtonEx
+            <controls:ToolbarButtonEx
                     PathData="{StaticResource ToolbarSaveGeometry}"/>
-            <Controls:ToolbarButtonEx
+            <controls:ToolbarButtonEx
                     PathData="{StaticResource ToolbarSaveAsGeometry}" />
         </ToolBar>
         <!-- -->
@@ -189,7 +189,7 @@
                             wpf:ThemeManager.LocalTheme="Light"
                             -->
                             <Button
-                                Wpf:ThemeManager.LocalTheme="Light"
+                                wpf:ThemeManager.LocalTheme="Light"
                                 Content="Button"
                                 Margin="8,8,0,8"
                                 Width="100" />
@@ -467,13 +467,13 @@
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
                             </DataGrid.Columns>
-                            <ViewModel:DataGridData 
+                            <viewModel:DataGridData 
                                 Column1="AAAAA" Column2="111111" Column3="aaaaaaa" Column4="!!!!!!!!" />
-                            <ViewModel:DataGridData 
+                            <viewModel:DataGridData 
                                 Column1="BBBBB" Column2="222222" Column3="bbbbbbb" Column4="%%%%%%%%" />
-                            <ViewModel:DataGridData 
+                            <viewModel:DataGridData 
                                 Column1="CCCCC" Column2="333333" Column3="ccccccc" Column4="§§§§§§§§" />
-                            <ViewModel:DataGridData 
+                            <viewModel:DataGridData 
                                 Column1="DDDDD" Column2="444444" Column3="ddddddd" Column4="$$$$$$$$" />
                         </DataGrid>
                     </StackPanel>

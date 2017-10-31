@@ -58,6 +58,7 @@ dlldata.c
 *.pidb
 *.svclog
 *.scc
+.vs/
 
 # Chutzpah Test files
 _Chutzpah*
@@ -184,3 +185,5 @@ FakesAssemblies/
 
 # Windows Image thumbnail database
 Thumbs.db
+
+__INTERNAL__/

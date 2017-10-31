@@ -22,7 +22,8 @@
 // ---------------------------------------------------------------------------
 #endregion
 
-namespace Tethys.Silverlight.Controls.WPF.Controls
+// ReSharper disable once CheckNamespace
+namespace Tethys.Silverlight.Controls.WPF
 {
     using System.Windows;
     using System.Windows.Controls;
@@ -56,7 +57,7 @@ namespace Tethys.Silverlight.Controls.WPF.Controls
 
         #region CONSTRUCTION
         /// <summary>
-        /// Initializes the <see cref="ToolbarButtonEx"/> class.
+        /// Initializes static members of the <see cref="ToolbarButtonEx"/> class.
         /// </summary>
         static ToolbarButtonEx()
         {
