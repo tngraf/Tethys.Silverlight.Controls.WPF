@@ -53,7 +53,7 @@ namespace Tethys.Silverlight.Controls.WPF.Demo.ViewModel
         /// </summary>
         public MainViewModel()
         {
-            this.LoginCommand = new DelegateCommand(this.ExecuteLoginCommand);
+            this.LoginCommand = new DelegateCommand(ExecuteLoginCommand);
         } // MainViewModel()
         #endregion // CONSTRUCTION
 
@@ -79,19 +79,19 @@ namespace Tethys.Silverlight.Controls.WPF.Demo.ViewModel
         /// Executes the loaded command.
         /// </summary>
         /// <param name="parameter">The parameter.</param>
-        private void ExecuteLoginCommand(object parameter)
+        private static void ExecuteLoginCommand(object parameter)
         {
             var pwdbox = parameter as PasswordBox;
             if (pwdbox != null)
             {
-                MessageBox.Show($"Password = {pwdbox.Password}");
+                MessageBox.Show("Password = " + pwdbox.Password);
                 return;
             } // if
 
             var pwdboxex = parameter as PasswordBoxEx;
             if (pwdboxex != null)
             {
-                MessageBox.Show($"Password = {pwdboxex.Password}");
+                MessageBox.Show("Password = " + pwdboxex.Password);
             } // if
         } // ExecuteLoginCommand()
         #endregion // PRIVATE METHODS

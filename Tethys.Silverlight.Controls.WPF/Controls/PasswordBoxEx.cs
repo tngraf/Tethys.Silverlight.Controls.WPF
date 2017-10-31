@@ -144,7 +144,10 @@ namespace Tethys.Silverlight.Controls.WPF
         /// that contains the event data.</param>
         protected override void OnGotFocus(RoutedEventArgs e)
         {
-            this.passwordBox?.Focus();
+            if (this.passwordBox != null)
+            {
+                this.passwordBox.Focus();
+            } // if
 
             base.OnGotFocus(e);
         } // OnGotFocus()
